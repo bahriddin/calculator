@@ -3,7 +3,10 @@ import DigitBtn from '../digitBtn/DigitBtn';
 function App() {
     return (
         <div>
-            <DigitBtn digit={10} />
+            <DigitBtn digit={0} />
+            <DigitBtn digit={0} />
+            <DigitBtn digit={0} />
+            <DigitBtn digit={0} />
         </div>
     );
 }

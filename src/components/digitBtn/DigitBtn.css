@@ -1,6 +1,8 @@
 .digit-div {
     font-size: 50px;
-    line-height: 55px;
+    line-height: 100%;
     background-color: #f8f8f8;
     color: #555;
+    padding: 20px 31px;
+    /* width: 135px; */
 }
