@@ -1,0 +1,13 @@
+.sign-div {
+    font-size: 34px;
+    line-height: 100%;
+    background-color: #f8f8f8;
+    color: #555;
+    width: 74px;
+    height: 74px;
+}
+
+.inner-sign-div {
+    position: relative;
+    top: 25%;
+}
