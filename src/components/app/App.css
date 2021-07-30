@@ -4,10 +4,12 @@
 
 .height-45 {
     height: 45%;
-    /* background-color: red; */
 }
 
 .height-55 {
     height: 55%;
-    /* background-color: blue; */
+}
+
+.top-sec {
+    border-bottom: 2px solid #f8f8f8;
 }

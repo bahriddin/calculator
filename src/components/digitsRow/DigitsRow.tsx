@@ -7,10 +7,10 @@ function DigitsRow({
   third,
   fourth,
 }: {
-  first: [sign: string | number, color?: string, bg?: string];
-  second: [sign: string | number, color?: string, bg?: string];
-  third: [sign: string | number, color?: string, bg?: string];
-  fourth: [sign: string | number, color?: string, bg?: string];
+  first: [sign: string | number | JSX.Element, color?: string, bg?: string];
+  second: [sign: string | number | JSX.Element, color?: string, bg?: string];
+  third: [sign: string | number | JSX.Element, color?: string, bg?: string];
+  fourth: [sign: string | number | JSX.Element, color?: string, bg?: string];
 }) {
   return (
     <Row xs={4}>

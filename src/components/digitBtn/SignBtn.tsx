@@ -5,7 +5,7 @@ function DigitBtn({
   color,
   bg,
 }: {
-  sign: number | string;
+  sign: number | string | JSX.Element;
   color?: string;
   bg?: string;
 }) {
