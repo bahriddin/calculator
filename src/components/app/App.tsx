@@ -6,7 +6,7 @@ import { RiDivideFill } from 'react-icons/ri';
 import { FiX } from 'react-icons/fi';
 import { FiMinus } from 'react-icons/fi';
 import { FiPlus } from 'react-icons/fi';
-import { TiBackspaceOutline } from 'react-icons/ti';
+// import { TiBackspaceOutline } from 'react-icons/ti';
 
 function App() {
   return (
