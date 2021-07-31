@@ -15,6 +15,7 @@ import DivideBtn from "../divideBtn/DivideBtn";
 import MultiplyBtn from '../multiplyBtn/MultiplyBtn';
 import MinusBtn from '../minusBtn/MinusBtn';
 import PlusBtn from '../plusBtn/PlusBtn';
+import EqualBtn from '../equalBtn/EqualBtn';
 
 function App() {
   return (
@@ -97,7 +98,7 @@ function App() {
                 <DigitBtn digit={3} />
               </Col>
               <Col>
-                <DigitBtn digit={4} />
+                <EqualBtn sign="=" color="#fff" bg="#68b31a" />
               </Col>
             </Row>
           </div>
