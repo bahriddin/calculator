@@ -1,5 +1,4 @@
 import "./App.css";
-// import DigitsRow from "../digitsRow/DigitsRow";
 import { Container, Row, Col } from "react-bootstrap";
 import { RiParenthesesFill } from "react-icons/ri";
 import { RiDivideFill } from "react-icons/ri";
@@ -16,6 +15,8 @@ import MultiplyBtn from '../multiplyBtn/MultiplyBtn';
 import MinusBtn from '../minusBtn/MinusBtn';
 import PlusBtn from '../plusBtn/PlusBtn';
 import EqualBtn from '../equalBtn/EqualBtn';
+import PosNegBtn from '../posNegBtn/PosNegBtn';
+import PointBtn from '../pointBtn/PointBtn';
 
 function App() {
   return (
@@ -89,13 +90,13 @@ function App() {
 
             <Row xs={4}>
               <Col>
-                <DigitBtn digit={1} />
+                <PosNegBtn sign='+/-' />
               </Col>
               <Col>
                 <DigitBtn digit={0} />
               </Col>
               <Col>
-                <DigitBtn digit={3} />
+                <PointBtn sign="." />
               </Col>
               <Col>
                 <EqualBtn sign="=" color="#fff" bg="#68b31a" />
