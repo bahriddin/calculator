@@ -1,8 +1,18 @@
 .sign-div {
-    font-size: 34px;
-    line-height: 100%;
-    background-color: #f8f8f8;
-    color: #555;
-    width: 74px;
-    height: 74px;
+  font-size: 34px;
+  line-height: 100%;
+  background-color: #f8f8f8;
+  color: #555;
+  width: 74px;
+  height: 74px;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; 
 }
+
+.sign-div:hover {
+    cursor: pointer;
+} 
