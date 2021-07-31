@@ -1,14 +1,7 @@
 import "./SignBtn.css";
+import { SignBtnType } from "../app/App";
 
-function DigitBtn({
-  sign,
-  color,
-  bg,
-}: {
-  sign: number | string | JSX.Element;
-  color?: string;
-  bg?: string;
-}) {
+function DigitBtn({ sign, color, bg }: SignBtnType) {
   return (
     <div
       style={{ color: color, backgroundColor: bg }}

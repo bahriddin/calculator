@@ -11,12 +11,19 @@ import ClearBtn from "../clearBtn/ClearBtn";
 import ParenBtn from "../parenBtn/ParenBtn";
 import RemainBtn from "../remainBtn/RemainBtn";
 import DivideBtn from "../divideBtn/DivideBtn";
-import MultiplyBtn from '../multiplyBtn/MultiplyBtn';
-import MinusBtn from '../minusBtn/MinusBtn';
-import PlusBtn from '../plusBtn/PlusBtn';
-import EqualBtn from '../equalBtn/EqualBtn';
-import PosNegBtn from '../posNegBtn/PosNegBtn';
-import PointBtn from '../pointBtn/PointBtn';
+import MultiplyBtn from "../multiplyBtn/MultiplyBtn";
+import MinusBtn from "../minusBtn/MinusBtn";
+import PlusBtn from "../plusBtn/PlusBtn";
+import EqualBtn from "../equalBtn/EqualBtn";
+import PosNegBtn from "../posNegBtn/PosNegBtn";
+import PointBtn from "../pointBtn/PointBtn";
+
+export type DigitBtnType = { digit: number; color?: string; bg?: string };
+export type SignBtnType = {
+  sign: string | number | JSX.Element;
+  color?: string;
+  bg?: string;
+};
 
 function App() {
   return (
@@ -90,7 +97,7 @@ function App() {
 
             <Row xs={4}>
               <Col>
-                <PosNegBtn sign='+/-' />
+                <PosNegBtn sign="+/-" />
               </Col>
               <Col>
                 <DigitBtn digit={0} />

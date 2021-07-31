@@ -1,11 +1,12 @@
-import SignBtn from '../signBtn/SignBtn'
+import SignBtn from "../signBtn/SignBtn";
+import { DigitBtnType } from "../app/App";
 
-function DigitBtn({ digit, color, bg }: { digit: number; color?: string; bg?: string }) {
-    return (
-        <div className="d-flex justify-content-center" onClick={() => console.log(digit)}>
-            <SignBtn sign={digit} color={color} bg={bg} />
-        </div>
-    );
+function DigitBtn({ digit, color, bg }: DigitBtnType) {
+  return (
+    <div onClick={() => console.log(digit)}>
+      <SignBtn sign={digit} color={color} bg={bg} />
+    </div>
+  );
 }
 
 export default DigitBtn;
