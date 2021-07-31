@@ -1,4 +1,4 @@
-import DigitBtn from "../digitBtn/SignBtn";
+import DigitBtn from "../signBtn/SignBtn";
 import { Row, Col } from "react-bootstrap";
 
 function DigitsRow({

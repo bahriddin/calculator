@@ -1,4 +1,4 @@
-import SignBtn from '../digitBtn/SignBtn';
+import SignBtn from '../signBtn/SignBtn';
 
 function ClearBtn() {
     return (
