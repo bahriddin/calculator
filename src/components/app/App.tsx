@@ -1,17 +1,18 @@
 import "./App.css";
-import DigitsRow from "../digitsRow/DigitsRow";
+// import DigitsRow from "../digitsRow/DigitsRow";
 import { Container, Row, Col } from "react-bootstrap";
 import { RiParenthesesFill } from "react-icons/ri";
 import { RiDivideFill } from "react-icons/ri";
 import { FiX } from "react-icons/fi";
-import { FiMinus } from "react-icons/fi";
-import { FiPlus } from "react-icons/fi";
+// import { FiMinus } from "react-icons/fi";
+// import { FiPlus } from "react-icons/fi";
 // import { TiBackspaceOutline } from 'react-icons/ti';
 import DigitBtn from "../digitBtn/DigitBtn";
 import ClearBtn from "../clearBtn/ClearBtn";
 import ParenBtn from "../parenBtn/ParenBtn";
 import RemainBtn from "../remainBtn/RemainBtn";
 import DivideBtn from "../divideBtn/DivideBtn";
+import MultiplyBtn from '../multiplyBtn/MultiplyBtn';
 
 function App() {
   return (
@@ -49,7 +50,7 @@ function App() {
                 <DigitBtn digit={9} />
               </Col>
               <Col>
-                <DigitBtn digit={4} />
+                <MultiplyBtn sign={<FiX />} color="#68b31a" />
               </Col>
             </Row>
 
