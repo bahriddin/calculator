@@ -8,9 +8,10 @@ import { FiMinus } from "react-icons/fi";
 import { FiPlus } from "react-icons/fi";
 // import { TiBackspaceOutline } from 'react-icons/ti';
 import DigitBtn from "../digitBtn/DigitBtn";
-import ClearBtn from '../clearBtn/ClearBtn';
-import ParenBtn from '../parenBtn/ParenBtn';
-import RemainBtn from '../remainBtn/RemainBtn';
+import ClearBtn from "../clearBtn/ClearBtn";
+import ParenBtn from "../parenBtn/ParenBtn";
+import RemainBtn from "../remainBtn/RemainBtn";
+import DivideBtn from "../divideBtn/DivideBtn";
 
 function App() {
   return (
@@ -27,13 +28,13 @@ function App() {
                 <ClearBtn sign="C" color="#e1694e" />
               </Col>
               <Col>
-                <ParenBtn sign={<RiParenthesesFill />} color='#68b31a' />
+                <ParenBtn sign={<RiParenthesesFill />} color="#68b31a" />
               </Col>
               <Col>
                 <RemainBtn sign="%" color="#68b31a" />
               </Col>
               <Col>
-                <DigitBtn digit={4} />
+                <DivideBtn sign={<RiDivideFill />} color="#68b31a" />
               </Col>
             </Row>
 
