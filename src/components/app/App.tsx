@@ -10,6 +10,7 @@ import { FiPlus } from "react-icons/fi";
 import DigitBtn from "../digitBtn/DigitBtn";
 import ClearBtn from '../clearBtn/ClearBtn';
 import ParenBtn from '../parenBtn/ParenBtn';
+import RemainBtn from '../remainBtn/RemainBtn';
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
                 <ParenBtn sign={<RiParenthesesFill />} color='#68b31a' />
               </Col>
               <Col>
-                <DigitBtn digit={3} />
+                <RemainBtn sign="%" color="#68b31a" />
               </Col>
               <Col>
                 <DigitBtn digit={4} />
