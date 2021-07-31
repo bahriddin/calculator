@@ -8,6 +8,7 @@ import { FiMinus } from "react-icons/fi";
 import { FiPlus } from "react-icons/fi";
 // import { TiBackspaceOutline } from 'react-icons/ti';
 import DigitBtn from "../digitBtn/DigitBtn";
+import ClearBtn from '../clearBtn/ClearBtn';
 
 function App() {
   return (
@@ -21,13 +22,43 @@ function App() {
           <div className="py-4 h-100 d-flex flex-column justify-content-between align-items-center">
             <Row xs={4}>
               <Col>
-                <DigitBtn digit={1} />
+                <ClearBtn sign="C" color="#e1694e" />
               </Col>
               <Col>
                 <DigitBtn digit={2} />
               </Col>
               <Col>
                 <DigitBtn digit={3} />
+              </Col>
+              <Col>
+                <DigitBtn digit={4} />
+              </Col>
+            </Row>
+
+            <Row xs={4}>
+              <Col>
+                <DigitBtn digit={7} />
+              </Col>
+              <Col>
+                <DigitBtn digit={8} />
+              </Col>
+              <Col>
+                <DigitBtn digit={9} />
+              </Col>
+              <Col>
+                <DigitBtn digit={4} />
+              </Col>
+            </Row>
+
+            <Row xs={4}>
+              <Col>
+                <DigitBtn digit={4} />
+              </Col>
+              <Col>
+                <DigitBtn digit={5} />
+              </Col>
+              <Col>
+                <DigitBtn digit={6} />
               </Col>
               <Col>
                 <DigitBtn digit={4} />
@@ -54,37 +85,7 @@ function App() {
                 <DigitBtn digit={1} />
               </Col>
               <Col>
-                <DigitBtn digit={2} />
-              </Col>
-              <Col>
-                <DigitBtn digit={3} />
-              </Col>
-              <Col>
-                <DigitBtn digit={4} />
-              </Col>
-            </Row>
-
-            <Row xs={4}>
-              <Col>
-                <DigitBtn digit={1} />
-              </Col>
-              <Col>
-                <DigitBtn digit={2} />
-              </Col>
-              <Col>
-                <DigitBtn digit={3} />
-              </Col>
-              <Col>
-                <DigitBtn digit={4} />
-              </Col>
-            </Row>
-
-            <Row xs={4}>
-              <Col>
-                <DigitBtn digit={1} />
-              </Col>
-              <Col>
-                <DigitBtn digit={2} />
+                <DigitBtn digit={0} />
               </Col>
               <Col>
                 <DigitBtn digit={3} />
