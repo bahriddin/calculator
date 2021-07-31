@@ -4,7 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { RiParenthesesFill } from "react-icons/ri";
 import { RiDivideFill } from "react-icons/ri";
 import { FiX } from "react-icons/fi";
-// import { FiMinus } from "react-icons/fi";
+import { FiMinus } from "react-icons/fi";
 // import { FiPlus } from "react-icons/fi";
 // import { TiBackspaceOutline } from 'react-icons/ti';
 import DigitBtn from "../digitBtn/DigitBtn";
@@ -13,6 +13,7 @@ import ParenBtn from "../parenBtn/ParenBtn";
 import RemainBtn from "../remainBtn/RemainBtn";
 import DivideBtn from "../divideBtn/DivideBtn";
 import MultiplyBtn from '../multiplyBtn/MultiplyBtn';
+import MinusBtn from '../minusBtn/MinusBtn';
 
 function App() {
   return (
@@ -65,7 +66,7 @@ function App() {
                 <DigitBtn digit={6} />
               </Col>
               <Col>
-                <DigitBtn digit={4} />
+                <MinusBtn sign={<FiMinus />} color="#68b31a" />
               </Col>
             </Row>
 
