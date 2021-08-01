@@ -1,11 +1,11 @@
 import "./App.css";
+// import {useState} from 'react';
 import { Container, Row, Col } from "react-bootstrap";
 import { RiParenthesesFill } from "react-icons/ri";
 import { RiDivideFill } from "react-icons/ri";
 import { FiX } from "react-icons/fi";
 import { FiMinus } from "react-icons/fi";
 import { FiPlus } from "react-icons/fi";
-// import { TiBackspaceOutline } from 'react-icons/ti';
 import DigitBtn from "../digitBtn/DigitBtn";
 import ClearBtn from "../clearBtn/ClearBtn";
 import ParenBtn from "../parenBtn/ParenBtn";
@@ -17,6 +17,7 @@ import PlusBtn from "../plusBtn/PlusBtn";
 import EqualBtn from "../equalBtn/EqualBtn";
 import PosNegBtn from "../posNegBtn/PosNegBtn";
 import PointBtn from "../pointBtn/PointBtn";
+import BackspaceBtn from '../backspaceBtn/BackspaceBtn';
 
 export type DigitBtnType = { digit: number; color?: string; bg?: string };
 export type SignBtnType = {
@@ -26,14 +27,32 @@ export type SignBtnType = {
 };
 
 function App() {
+  // const [result, setResult] = useState<number>();
+
+  // function addNumToRes(digit: number) {
+  //   setResult((prev: number | undefined) => {
+  //     if (prev !== undefined) {
+  //       let strRes = prev.toString();
+  //     strRes += `${digit}`;
+      
+  //     return Number(strRes);
+  //     } 
+  //     else {
+  //       return digit;
+  //     }
+  //   });
+  // }
+
   return (
     <Container>
-      <div className="height-100">
-        <div className="height-45 top-sec">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum,
-          veniam.s
+      <div className="height-100 px-2">
+        <div className="height-44 top-sec d-flex flex-column justify-content-between">
+          <h1>0123456789</h1>
+          <div className="mb-4 pr-3 d-flex justify-content-end">
+            <BackspaceBtn />
+          </div>
         </div>
-        <div className="height-55 bottom-sec">
+        <div className="height-56 bottom-sec">
           <div className="py-4 h-100 d-flex flex-column justify-content-between align-items-center">
             <Row xs={4}>
               <Col>
