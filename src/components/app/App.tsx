@@ -6,6 +6,12 @@ import BackspaceBtn from '../backspaceBtn/BackspaceBtn';
 import SymbolBtn from "../symbolBtn/SymbolBtn";
 
 export type DigitBtnType = { digit: number; color?: string; bg?: string, clickDigit: Function };
+export type SymbolBtnType = {
+  sign: string | number | JSX.Element;
+  color?: string;
+  bg?: string;
+  clickSymbol: Function;
+};
 export type SignBtnType = {
   sign: string | number | JSX.Element;
   color?: string;
@@ -17,6 +23,12 @@ function App() {
 
   function clickDigit(digit: number) {
     setResult((prev) => prev + String(digit));
+  }
+
+  function clickSymbol(symbol: any) {
+    if (symbol === 'C') {
+      setResult('');
+    }
   }
 
   return (
@@ -32,16 +44,16 @@ function App() {
           <div className="py-4 h-100 d-flex flex-column justify-content-between align-items-center">
             <Row xs={4}>
               <Col>
-                <SymbolBtn sign="C" color="#e1694e" />
+                <SymbolBtn sign="C" color="#e1694e" clickSymbol={clickSymbol} />
               </Col>
               <Col>
-                <SymbolBtn sign="( )" color="#68b31a" />
+                <SymbolBtn sign="( )" color="#68b31a" clickSymbol={clickSymbol} />
               </Col>
               <Col>
-                <SymbolBtn sign="%" color="#68b31a" />
+                <SymbolBtn sign="%" color="#68b31a" clickSymbol={clickSymbol} />
               </Col>
               <Col>
-                <SymbolBtn sign="÷" color="#68b31a" />
+                <SymbolBtn sign="÷" color="#68b31a" clickSymbol={clickSymbol} />
               </Col>
             </Row>
 
@@ -56,7 +68,7 @@ function App() {
                 <DigitBtn digit={9} clickDigit={clickDigit} />
               </Col>
               <Col>
-                <SymbolBtn sign="×" color="#68b31a" />
+                <SymbolBtn sign="×" color="#68b31a" clickSymbol={clickSymbol} />
               </Col>
             </Row>
 
@@ -71,7 +83,7 @@ function App() {
                 <DigitBtn digit={6} clickDigit={clickDigit} />
               </Col>
               <Col>
-                <SymbolBtn sign="-" color="#68b31a" />
+                <SymbolBtn sign="-" color="#68b31a" clickSymbol={clickSymbol}  />
               </Col>
             </Row>
 
@@ -86,22 +98,22 @@ function App() {
                 <DigitBtn digit={3} clickDigit={clickDigit} />
               </Col>
               <Col>
-                <SymbolBtn sign="+" color="#68b31a" />
+                <SymbolBtn sign="+" color="#68b31a" clickSymbol={clickSymbol} />
               </Col>
             </Row>
 
             <Row xs={4}>
               <Col>
-                <SymbolBtn sign="+/-" />
+                <SymbolBtn sign="+/-" clickSymbol={clickSymbol} />
               </Col>
               <Col>
                 <DigitBtn digit={0} clickDigit={clickDigit} />
               </Col>
               <Col>
-                <SymbolBtn sign="." />
+                <SymbolBtn sign="." clickSymbol={clickSymbol} />
               </Col>
               <Col>
-                <SymbolBtn sign="=" color="#fff" bg="#68b31a" />
+                <SymbolBtn sign="=" color="#fff" bg="#68b31a" clickSymbol={clickSymbol} />
               </Col>
             </Row>
           </div>
