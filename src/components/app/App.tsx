@@ -18,6 +18,7 @@ import EqualBtn from "../equalBtn/EqualBtn";
 import PosNegBtn from "../posNegBtn/PosNegBtn";
 import PointBtn from "../pointBtn/PointBtn";
 import BackspaceBtn from '../backspaceBtn/BackspaceBtn';
+import SymbolBtn from "../symbolBtn/SymbolBtn";
 
 export type DigitBtnType = { digit: number; color?: string; bg?: string };
 export type SignBtnType = {
@@ -56,16 +57,16 @@ function App() {
           <div className="py-4 h-100 d-flex flex-column justify-content-between align-items-center">
             <Row xs={4}>
               <Col>
-                <ClearBtn sign="C" color="#e1694e" />
+                <SymbolBtn sign="C" color="#e1694e" />
               </Col>
               <Col>
-                <ParenBtn sign={<RiParenthesesFill />} color="#68b31a" />
+                <SymbolBtn sign="( )" color="#68b31a" />
               </Col>
               <Col>
-                <RemainBtn sign="%" color="#68b31a" />
+                <SymbolBtn sign="%" color="#68b31a" />
               </Col>
               <Col>
-                <DivideBtn sign={<RiDivideFill />} color="#68b31a" />
+                <SymbolBtn sign="÷" color="#68b31a" />
               </Col>
             </Row>
 
@@ -80,7 +81,7 @@ function App() {
                 <DigitBtn digit={9} />
               </Col>
               <Col>
-                <MultiplyBtn sign={<FiX />} color="#68b31a" />
+                <SymbolBtn sign="×" color="#68b31a" />
               </Col>
             </Row>
 
@@ -95,7 +96,7 @@ function App() {
                 <DigitBtn digit={6} />
               </Col>
               <Col>
-                <MinusBtn sign={<FiMinus />} color="#68b31a" />
+                <SymbolBtn sign="-" color="#68b31a" />
               </Col>
             </Row>
 
@@ -110,22 +111,22 @@ function App() {
                 <DigitBtn digit={3} />
               </Col>
               <Col>
-                <PlusBtn sign={<FiPlus />} color="#68b31a" />
+                <SymbolBtn sign="+" color="#68b31a" />
               </Col>
             </Row>
 
             <Row xs={4}>
               <Col>
-                <PosNegBtn sign="+/-" />
+                <SymbolBtn sign="+/-" />
               </Col>
               <Col>
                 <DigitBtn digit={0} />
               </Col>
               <Col>
-                <PointBtn sign="." />
+                <SymbolBtn sign="." />
               </Col>
               <Col>
-                <EqualBtn sign="=" color="#fff" bg="#68b31a" />
+                <SymbolBtn sign="=" color="#fff" bg="#68b31a" />
               </Col>
             </Row>
           </div>
