@@ -1,26 +1,11 @@
 import "./App.css";
-// import {useState} from 'react';
+import {useState} from 'react';
 import { Container, Row, Col } from "react-bootstrap";
-import { RiParenthesesFill } from "react-icons/ri";
-import { RiDivideFill } from "react-icons/ri";
-import { FiX } from "react-icons/fi";
-import { FiMinus } from "react-icons/fi";
-import { FiPlus } from "react-icons/fi";
 import DigitBtn from "../digitBtn/DigitBtn";
-import ClearBtn from "../clearBtn/ClearBtn";
-import ParenBtn from "../parenBtn/ParenBtn";
-import RemainBtn from "../remainBtn/RemainBtn";
-import DivideBtn from "../divideBtn/DivideBtn";
-import MultiplyBtn from "../multiplyBtn/MultiplyBtn";
-import MinusBtn from "../minusBtn/MinusBtn";
-import PlusBtn from "../plusBtn/PlusBtn";
-import EqualBtn from "../equalBtn/EqualBtn";
-import PosNegBtn from "../posNegBtn/PosNegBtn";
-import PointBtn from "../pointBtn/PointBtn";
 import BackspaceBtn from '../backspaceBtn/BackspaceBtn';
 import SymbolBtn from "../symbolBtn/SymbolBtn";
 
-export type DigitBtnType = { digit: number; color?: string; bg?: string };
+export type DigitBtnType = { digit: number; color?: string; bg?: string, clickDigit: Function };
 export type SignBtnType = {
   sign: string | number | JSX.Element;
   color?: string;
@@ -28,27 +13,17 @@ export type SignBtnType = {
 };
 
 function App() {
-  // const [result, setResult] = useState<number>();
+  const [result, setResult] = useState<string>('');
 
-  // function addNumToRes(digit: number) {
-  //   setResult((prev: number | undefined) => {
-  //     if (prev !== undefined) {
-  //       let strRes = prev.toString();
-  //     strRes += `${digit}`;
-      
-  //     return Number(strRes);
-  //     } 
-  //     else {
-  //       return digit;
-  //     }
-  //   });
-  // }
+  function clickDigit(digit: number) {
+    setResult((prev) => prev + String(digit));
+  }
 
   return (
     <Container>
       <div className="height-100 px-2">
         <div className="height-44 top-sec d-flex flex-column justify-content-between">
-          <h1>0123456789</h1>
+          <h1>{result}</h1>
           <div className="mb-4 pr-3 d-flex justify-content-end">
             <BackspaceBtn />
           </div>
@@ -72,13 +47,13 @@ function App() {
 
             <Row xs={4}>
               <Col>
-                <DigitBtn digit={7} />
+                <DigitBtn digit={7} clickDigit={clickDigit} />
               </Col>
               <Col>
-                <DigitBtn digit={8} />
+                <DigitBtn digit={8} clickDigit={clickDigit} />
               </Col>
               <Col>
-                <DigitBtn digit={9} />
+                <DigitBtn digit={9} clickDigit={clickDigit} />
               </Col>
               <Col>
                 <SymbolBtn sign="×" color="#68b31a" />
@@ -87,13 +62,13 @@ function App() {
 
             <Row xs={4}>
               <Col>
-                <DigitBtn digit={4} />
+                <DigitBtn digit={4} clickDigit={clickDigit} />
               </Col>
               <Col>
-                <DigitBtn digit={5} />
+                <DigitBtn digit={5} clickDigit={clickDigit} />
               </Col>
               <Col>
-                <DigitBtn digit={6} />
+                <DigitBtn digit={6} clickDigit={clickDigit} />
               </Col>
               <Col>
                 <SymbolBtn sign="-" color="#68b31a" />
@@ -102,13 +77,13 @@ function App() {
 
             <Row xs={4}>
               <Col>
-                <DigitBtn digit={1} />
+                <DigitBtn digit={1} clickDigit={clickDigit} />
               </Col>
               <Col>
-                <DigitBtn digit={2} />
+                <DigitBtn digit={2} clickDigit={clickDigit} />
               </Col>
               <Col>
-                <DigitBtn digit={3} />
+                <DigitBtn digit={3} clickDigit={clickDigit} />
               </Col>
               <Col>
                 <SymbolBtn sign="+" color="#68b31a" />
@@ -120,7 +95,7 @@ function App() {
                 <SymbolBtn sign="+/-" />
               </Col>
               <Col>
-                <DigitBtn digit={0} />
+                <DigitBtn digit={0} clickDigit={clickDigit} />
               </Col>
               <Col>
                 <SymbolBtn sign="." />
