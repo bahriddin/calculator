@@ -7,7 +7,7 @@ import SymbolBtn from "../symbolBtn/SymbolBtn";
 
 export type DigitBtnType = { digit: number; color?: string; bg?: string, clickDigit: Function };
 export type SymbolBtnType = {
-  sign: string | number | JSX.Element;
+  sign: string;
   color?: string;
   bg?: string;
   clickSymbol: Function;
@@ -25,9 +25,13 @@ function App() {
     setResult((prev) => prev + String(digit));
   }
 
-  function clickSymbol(symbol: any) {
-    if (symbol === 'C') {
-      setResult('');
+  function clickSymbol(symbol: string) {
+    const symbols = ['C', '( )', '%', '÷', '×', '-', '+', '='];
+    const index = symbols.indexOf(symbol);
+
+    switch (index) {
+      case 0: 
+        setResult('');
     }
   }
 
