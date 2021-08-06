@@ -46,6 +46,25 @@ function App() {
   }
 
   function backspace() {
+    setExpress((prev) => {
+      const sliced = prev.slice();
+      const last = sliced.splice(sliced.length - 1, 1)[0];
+
+      if (last !== undefined) {
+        const len = last.length;
+        let newLast = "";
+
+        for (let i = 0; i < len - 1; i++) {
+          newLast += last[i];
+        }
+
+        return newLast === "" ? [...sliced] : [...sliced, newLast];
+      }
+      else {
+        return [];
+      }
+    });
+
     // setExpress((prev) => {
     //   const sliced = prev.slice();
     //   const len = sliced.length;
