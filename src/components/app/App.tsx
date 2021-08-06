@@ -24,55 +24,73 @@ export type SignBtnType = {
 };
 
 function App() {
-  const [result, setResult] = useState<string>("");
-  
+  const [express, setExpress] = useState<Array<string>>(['asda', 'adsdas']);
 
   function clickDigit(digit: number) {
-    setResult((prev) => prev + String(digit));
+    setExpress((prev) => {
+      const sliced = prev.slice();
+      const len = sliced.length;
+      const last = sliced.splice(len - 1, 1);
+      
+      sliced.push(last + String(digit));
+
+      return sliced;
+    });
   }
 
   function backspace() {
-    setResult((prev) => {
-      const len = prev.length;
-      let newRes = '';
+    setExpress((prev) => {
+      const sliced = prev.slice();
+      const len = sliced.length;
+      const last = sliced.splice(len - 1, 1)[0];
+      const lastLen = last.length;
+      let lastRes = '';
 
-      for (let i = 0; i < len - 1; i++) {
-        newRes += prev[i];
+      for (let i = 0; i < lastLen - 1; i++) {
+        lastRes += last[i];
       }
 
-      return newRes;
+      sliced.push(lastRes);
+
+      return sliced;
     });
   }
 
   function clickSymbol(symbol: string) {
-    const symbols = ["C", "( )", "%", "÷", "×", "-", "+", "="];
+    const symbols = ["C", "( )", "%", "÷", "×", "-", "+", "=", '.', '+/-'];
     const index = symbols.indexOf(symbol);
 
     switch (index) {
-      case 0:
-        setResult("");
+      case 0: // C
+        setExpress(['']);
         break;
 
-      case 1:
+      case 1: // ()
         break;
 
-      case 2:
+      case 2: // %
         break;
 
-      case 3:
+      case 3: // ÷
         break;
 
-      case 4:
+      case 4: // ×
         break;
 
-      case 5:
+      case 5: // -
         break;
 
-      case 6:
-        // number
+      case 6: // +
+        
         break;
 
-      case 7:
+      case 7: // =
+        break;
+
+      case 8: // .
+        break;
+
+      case 9: // +/-
         break;
     }
   }
@@ -81,7 +99,7 @@ function App() {
     <Container>
       <div className="height-100 px-2">
         <div className="height-44 top-sec d-flex flex-column justify-content-between">
-          <h1>{result}</h1>
+          <h1>{express}</h1>
           <div className="mb-4 pr-3 d-flex justify-content-end">
             <BackspaceBtn backspace={backspace} />
           </div>
