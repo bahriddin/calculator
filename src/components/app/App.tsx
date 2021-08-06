@@ -24,36 +24,40 @@ export type SignBtnType = {
 };
 
 function App() {
-  const [express, setExpress] = useState<Array<string>>(["asda", "adsdas"]);
+  const [express, setExpress] = useState<Array<string>>([]);
 
   function clickDigit(digit: number) {
+    const symbols = ["C", "( )", "%", "÷", "×", "-", "+", "=", ".", "+/-"];
     setExpress((prev) => {
       const sliced = prev.slice();
-      const len = sliced.length;
-      const last = sliced.splice(len - 1, 1);
+      const last = sliced.splice(sliced.length - 1, 1)[0];
 
-      sliced.push(last + String(digit));
-
-      return sliced;
+      if (last === undefined) {
+        return [`${digit}`];
+      } else {
+        if (!symbols.includes(last)) {
+          sliced.push(last + `${digit}`);
+          return [...sliced];
+        } else {
+          return [...sliced, last, `${digit}`];
+        }
+      }
     });
   }
 
   function backspace() {
-    setExpress((prev) => {
-      const sliced = prev.slice();
-      const len = sliced.length;
-      const last = sliced.splice(len - 1, 1)[0];
-      const lastLen = last.length;
-      let lastRes = "";
-
-      for (let i = 0; i < lastLen - 1; i++) {
-        lastRes += last[i];
-      }
-
-      sliced.push(lastRes);
-
-      return sliced;
-    });
+    // setExpress((prev) => {
+    //   const sliced = prev.slice();
+    //   const len = sliced.length;
+    //   const last = sliced.splice(len - 1, 1)[0];
+    //   const lastLen = last.length;
+    //   let lastRes = "";
+    //   for (let i = 0; i < lastLen - 1; i++) {
+    //     lastRes += last[i];
+    //   }
+    //   sliced.push(lastRes);
+    //   return sliced;
+    // });
   }
 
   function clickSymbol(symbol: string) {
@@ -62,7 +66,7 @@ function App() {
 
     switch (index) {
       case 0: // C
-        setExpress([""]);
+        setExpress([]);
         break;
 
       case 1: // ()
@@ -75,11 +79,11 @@ function App() {
         setExpress((prev) => {
           const sliced = prev.slice();
           const len = sliced.length;
-          const last = sliced.slice(len - 1, len);
+          const last = sliced.slice(len - 1, len)[0];
 
-          return symbols.includes(last[0]) || last[0] === ""
-            ? [...prev]
-            : [...prev, "÷", ""];
+          return symbols.includes(last) || last === undefined
+            ? [...sliced]
+            : [...sliced, "÷"];
         });
         break;
 
@@ -87,11 +91,11 @@ function App() {
         setExpress((prev) => {
           const sliced = prev.slice();
           const len = sliced.length;
-          const last = sliced.slice(len - 1, len);
+          const last = sliced.slice(len - 1, len)[0];
 
-          return symbols.includes(last[0]) || last[0] === ""
-            ? [...prev]
-            : [...prev, "×", ""];
+          return symbols.includes(last) || last === undefined
+            ? [...sliced]
+            : [...sliced, "×"];
         });
         break;
 
@@ -99,11 +103,11 @@ function App() {
         setExpress((prev) => {
           const sliced = prev.slice();
           const len = sliced.length;
-          const last = sliced.slice(len - 1, len);
+          const last = sliced.slice(len - 1, len)[0];
 
-          return symbols.includes(last[0]) || last[0] === ""
-            ? [...prev]
-            : [...prev, "-", ""];
+          return symbols.includes(last) || last === undefined
+            ? [...sliced]
+            : [...sliced, "-"];
         });
         break;
 
@@ -111,11 +115,11 @@ function App() {
         setExpress((prev) => {
           const sliced = prev.slice();
           const len = sliced.length;
-          const last = sliced.slice(len - 1, len);
+          const last = sliced.slice(len - 1, len)[0];
 
-          return symbols.includes(last[0]) || last[0] === ""
-            ? [...prev]
-            : [...prev, "+", ""];
+          return symbols.includes(last) || last === undefined
+            ? [...sliced]
+            : [...sliced, "+"];
         });
         break;
 
