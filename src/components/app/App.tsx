@@ -31,6 +31,19 @@ function App() {
     setResult((prev) => prev + String(digit));
   }
 
+  function backspace() {
+    setResult((prev) => {
+      const len = prev.length;
+      let newRes = '';
+
+      for (let i = 0; i < len - 1; i++) {
+        newRes += prev[i];
+      }
+
+      return newRes;
+    });
+  }
+
   function clickSymbol(symbol: string) {
     const symbols = ["C", "( )", "%", "÷", "×", "-", "+", "="];
     const index = symbols.indexOf(symbol);
@@ -70,7 +83,7 @@ function App() {
         <div className="height-44 top-sec d-flex flex-column justify-content-between">
           <h1>{result}</h1>
           <div className="mb-4 pr-3 d-flex justify-content-end">
-            <BackspaceBtn />
+            <BackspaceBtn backspace={backspace} />
           </div>
         </div>
         <div className="height-56 bottom-sec">
