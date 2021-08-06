@@ -1,11 +1,16 @@
 import "./App.css";
-import {useState} from 'react';
+import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import DigitBtn from "../digitBtn/DigitBtn";
-import BackspaceBtn from '../backspaceBtn/BackspaceBtn';
+import BackspaceBtn from "../backspaceBtn/BackspaceBtn";
 import SymbolBtn from "../symbolBtn/SymbolBtn";
 
-export type DigitBtnType = { digit: number; color?: string; bg?: string, clickDigit: Function };
+export type DigitBtnType = {
+  digit: number;
+  color?: string;
+  bg?: string;
+  clickDigit: Function;
+};
 export type SymbolBtnType = {
   sign: string;
   color?: string;
@@ -19,19 +24,43 @@ export type SignBtnType = {
 };
 
 function App() {
-  const [result, setResult] = useState<string>('');
+  const [result, setResult] = useState<string>("");
+  
 
   function clickDigit(digit: number) {
     setResult((prev) => prev + String(digit));
   }
 
   function clickSymbol(symbol: string) {
-    const symbols = ['C', '( )', '%', '÷', '×', '-', '+', '='];
+    const symbols = ["C", "( )", "%", "÷", "×", "-", "+", "="];
     const index = symbols.indexOf(symbol);
 
     switch (index) {
-      case 0: 
-        setResult('');
+      case 0:
+        setResult("");
+        break;
+
+      case 1:
+        break;
+
+      case 2:
+        break;
+
+      case 3:
+        break;
+
+      case 4:
+        break;
+
+      case 5:
+        break;
+
+      case 6:
+        // number
+        break;
+
+      case 7:
+        break;
     }
   }
 
@@ -51,7 +80,11 @@ function App() {
                 <SymbolBtn sign="C" color="#e1694e" clickSymbol={clickSymbol} />
               </Col>
               <Col>
-                <SymbolBtn sign="( )" color="#68b31a" clickSymbol={clickSymbol} />
+                <SymbolBtn
+                  sign="( )"
+                  color="#68b31a"
+                  clickSymbol={clickSymbol}
+                />
               </Col>
               <Col>
                 <SymbolBtn sign="%" color="#68b31a" clickSymbol={clickSymbol} />
@@ -87,7 +120,7 @@ function App() {
                 <DigitBtn digit={6} clickDigit={clickDigit} />
               </Col>
               <Col>
-                <SymbolBtn sign="-" color="#68b31a" clickSymbol={clickSymbol}  />
+                <SymbolBtn sign="-" color="#68b31a" clickSymbol={clickSymbol} />
               </Col>
             </Row>
 
@@ -117,7 +150,12 @@ function App() {
                 <SymbolBtn sign="." clickSymbol={clickSymbol} />
               </Col>
               <Col>
-                <SymbolBtn sign="=" color="#fff" bg="#68b31a" clickSymbol={clickSymbol} />
+                <SymbolBtn
+                  sign="="
+                  color="#fff"
+                  bg="#68b31a"
+                  clickSymbol={clickSymbol}
+                />
               </Col>
             </Row>
           </div>
