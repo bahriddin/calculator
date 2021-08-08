@@ -25,9 +25,9 @@ export type SignBtnType = {
 
 function App() {
   const [express, setExpress] = useState<Array<string>>([]);
+  const SYMBOLS = ["C", "( )", "%", "÷", "×", "-", "+", "=", ".", "+/-"];
 
   function clickDigit(digit: number) {
-    const symbols = ["C", "( )", "%", "÷", "×", "-", "+", "=", ".", "+/-"];
     setExpress((prev) => {
       const sliced = prev.slice();
       const last = sliced.splice(sliced.length - 1, 1)[0];
@@ -35,7 +35,7 @@ function App() {
       if (last === undefined) {
         return [`${digit}`];
       } else {
-        if (!symbols.includes(last)) {
+        if (!SYMBOLS.includes(last)) {
           sliced.push(last + `${digit}`);
           return [...sliced];
         } else {
@@ -59,29 +59,14 @@ function App() {
         }
 
         return newLast === "" ? [...sliced] : [...sliced, newLast];
-      }
-      else {
+      } else {
         return [];
       }
     });
-
-    // setExpress((prev) => {
-    //   const sliced = prev.slice();
-    //   const len = sliced.length;
-    //   const last = sliced.splice(len - 1, 1)[0];
-    //   const lastLen = last.length;
-    //   let lastRes = "";
-    //   for (let i = 0; i < lastLen - 1; i++) {
-    //     lastRes += last[i];
-    //   }
-    //   sliced.push(lastRes);
-    //   return sliced;
-    // });
   }
 
   function clickSymbol(symbol: string) {
-    const symbols = ["C", "( )", "%", "÷", "×", "-", "+", "=", ".", "+/-"];
-    const index = symbols.indexOf(symbol);
+    const index = SYMBOLS.indexOf(symbol);
 
     switch (index) {
       case 0: // C
@@ -100,7 +85,7 @@ function App() {
           const len = sliced.length;
           const last = sliced.slice(len - 1, len)[0];
 
-          return symbols.includes(last) || last === undefined
+          return SYMBOLS.includes(last) || last === undefined
             ? [...sliced]
             : [...sliced, "÷"];
         });
@@ -112,7 +97,7 @@ function App() {
           const len = sliced.length;
           const last = sliced.slice(len - 1, len)[0];
 
-          return symbols.includes(last) || last === undefined
+          return SYMBOLS.includes(last) || last === undefined
             ? [...sliced]
             : [...sliced, "×"];
         });
@@ -124,7 +109,7 @@ function App() {
           const len = sliced.length;
           const last = sliced.slice(len - 1, len)[0];
 
-          return symbols.includes(last) || last === undefined
+          return SYMBOLS.includes(last) || last === undefined
             ? [...sliced]
             : [...sliced, "-"];
         });
@@ -136,13 +121,62 @@ function App() {
           const len = sliced.length;
           const last = sliced.slice(len - 1, len)[0];
 
-          return symbols.includes(last) || last === undefined
+          return SYMBOLS.includes(last) || last === undefined
             ? [...sliced]
             : [...sliced, "+"];
         });
         break;
 
       case 7: // =
+        
+        setExpress((prev) => {
+          let sliced = prev.slice();
+          
+          if (sliced.length === 0) {
+            return [];
+          }
+
+          const len = sliced.length;
+          const last = sliced.slice(len - 1, len)[0];
+        
+          if (!SYMBOLS.includes(last)) {
+            let sLen = len;
+            let newSliced: Array<string> = [];
+            let res = Number(sliced[0]);
+
+            for (let i = 1; i < sLen; i += 2) {
+              if (sliced[i] === "+" || sliced[i] === "-") {
+                newSliced.push(String(res), sliced[i]);
+                res = Number(sliced[i + 1]);
+              }
+
+              if (sliced[i] === "×") {
+                res *= Number(sliced[i + 1]);
+              }
+
+              if (sliced[i] === "÷") {
+                res /= Number(sliced[i + 1]);
+              }
+            }
+            
+            newSliced.push(String(res));
+            sliced = newSliced;
+            sLen = sliced.length;
+            newSliced = [sliced[0]];
+
+            for (let i = 1; i < sLen; i += 2) {
+              if (sliced[i] === "+") {
+                newSliced[0] = String(Number(newSliced[0]) + Number(sliced[i + 1]));
+              } else {
+                newSliced[0] = String(Number(newSliced[0]) - Number(sliced[i + 1]));
+              }
+            }
+
+            return [newSliced[0]];
+          } else {
+            return sliced;
+          }
+        });
         break;
 
       case 8: // .
