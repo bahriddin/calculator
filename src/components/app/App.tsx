@@ -23,21 +23,22 @@ export type SignBtnType = {
   bg?: string;
 };
 
+const SYMBOLS = ["C", "( )", "%", "÷", "×", "-", "+", "=", ".", "+/-"];
+
 function App() {
   const [express, setExpress] = useState<Array<string>>([]);
-  const SYMBOLS = ["C", "( )", "%", "÷", "×", "-", "+", "=", ".", "+/-"];
 
   function clickDigit(digit: number) {
     setExpress((prev) => {
+      const symbols = ["%", "÷", "×", "-", "+"];
       const sliced = prev.slice();
       const last = sliced.splice(sliced.length - 1, 1)[0];
 
       if (last === undefined) {
         return [`${digit}`];
       } else {
-        if (!SYMBOLS.includes(last)) {
-          sliced.push(last + `${digit}`);
-          return [...sliced];
+        if (!symbols.includes(last)) {
+          return [...sliced, last + `${digit}`];
         } else {
           return [...sliced, last, `${digit}`];
         }
@@ -66,6 +67,7 @@ function App() {
   }
 
   function clickSymbol(symbol: string) {
+    // const symbols = ["(", ")", "%", "÷", "×", "-", "+", ".",];
     const index = SYMBOLS.indexOf(symbol);
 
     switch (index) {
@@ -128,61 +130,35 @@ function App() {
         break;
 
       case 7: // =
-        
+        setExpress((prev) => lastCal(prev));
+        break;
+
+      case 8: // .
         setExpress((prev) => {
-          let sliced = prev.slice();
+          const symbols = ["+", "-", "×", "÷", '(', ')', '%'];
+          const sliced = prev.slice();
+          const len = sliced.length;
+          const last = sliced.splice(len - 1, len)[0];
           
-          if (sliced.length === 0) {
+          if (last === undefined) {
             return [];
           }
 
-          const len = sliced.length;
-          const last = sliced.slice(len - 1, len)[0];
-        
-          if (!SYMBOLS.includes(last)) {
-            let sLen = len;
-            let newSliced: Array<string> = [];
-            let res = Number(sliced[0]);
+          if (symbols.includes(last)) {
+            return [...sliced, last, '.'];
+          }
 
-            for (let i = 1; i < sLen; i += 2) {
-              if (sliced[i] === "+" || sliced[i] === "-") {
-                newSliced.push(String(res), sliced[i]);
-                res = Number(sliced[i + 1]);
-              }
-
-              if (sliced[i] === "×") {
-                res *= Number(sliced[i + 1]);
-              }
-
-              if (sliced[i] === "÷") {
-                res /= Number(sliced[i + 1]);
-              }
-            }
-            
-            newSliced.push(String(res));
-            sliced = newSliced;
-            sLen = sliced.length;
-            newSliced = [sliced[0]];
-
-            for (let i = 1; i < sLen; i += 2) {
-              if (sliced[i] === "+") {
-                newSliced[0] = String(Number(newSliced[0]) + Number(sliced[i + 1]));
-              } else {
-                newSliced[0] = String(Number(newSliced[0]) - Number(sliced[i + 1]));
-              }
-            }
-
-            return [newSliced[0]];
-          } else {
-            return sliced;
+          if (!last.includes('.')) {
+            return [...sliced, last + '.'];
+          }
+          else {
+            return [...sliced, last];
           }
         });
         break;
 
-      case 8: // .
-        break;
-
       case 9: // +/-
+        
         break;
     }
   }
@@ -286,6 +262,55 @@ function App() {
       </div>
     </Container>
   );
+}
+
+function lastCal(express: Array<string>) {
+  let sliced = express.slice();
+
+  if (sliced.length === 0) {
+    return [];
+  }
+
+  const len = sliced.length;
+  const last = sliced.slice(len - 1, len)[0];
+
+  if (!SYMBOLS.includes(last)) {
+    let sLen = len;
+    let newSliced: Array<string> = [];
+    let res = Number(sliced[0]);
+
+    for (let i = 1; i < sLen; i += 2) {
+      if (sliced[i] === "+" || sliced[i] === "-") {
+        newSliced.push(String(res), sliced[i]);
+        res = Number(sliced[i + 1]);
+      }
+
+      if (sliced[i] === "×") {
+        res *= Number(sliced[i + 1]);
+      }
+
+      if (sliced[i] === "÷") {
+        res /= Number(sliced[i + 1]);
+      }
+    }
+
+    newSliced.push(String(res));
+    sliced = newSliced;
+    sLen = sliced.length;
+    newSliced = [sliced[0]];
+
+    for (let i = 1; i < sLen; i += 2) {
+      if (sliced[i] === "+") {
+        newSliced[0] = String(Number(newSliced[0]) + Number(sliced[i + 1]));
+      } else {
+        newSliced[0] = String(Number(newSliced[0]) - Number(sliced[i + 1]));
+      }
+    }
+
+    return [newSliced[0]];
+  } else {
+    return sliced;
+  }
 }
 
 export default App;
