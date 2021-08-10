@@ -30,7 +30,7 @@ function App() {
 
   function clickDigit(digit: number) {
     setExpress((prev) => {
-      const symbols = ["%", "÷", "×", "-", "+"];
+      const symbols = ["%", "÷", "×", "-", "+", "(", ")"];
       const sliced = prev.slice();
       const last = sliced.splice(sliced.length - 1, 1)[0];
 
@@ -83,11 +83,12 @@ function App() {
 
       case 3: // ÷
         setExpress((prev) => {
+          const symbols = ['÷', '×', '+', '-', '('];
           const sliced = prev.slice();
           const len = sliced.length;
           const last = sliced.slice(len - 1, len)[0];
 
-          return SYMBOLS.includes(last) || last === undefined
+          return symbols.includes(last) || last === undefined
             ? [...sliced]
             : [...sliced, "÷"];
         });
@@ -95,11 +96,12 @@ function App() {
 
       case 4: // ×
         setExpress((prev) => {
+          const symbols = ['÷', '×', '+', '-', '('];
           const sliced = prev.slice();
           const len = sliced.length;
           const last = sliced.slice(len - 1, len)[0];
 
-          return SYMBOLS.includes(last) || last === undefined
+          return symbols.includes(last) || last === undefined
             ? [...sliced]
             : [...sliced, "×"];
         });
@@ -107,11 +109,12 @@ function App() {
 
       case 5: // -
         setExpress((prev) => {
+          const symbols = ['+', '-', '×', '÷', '('];
           const sliced = prev.slice();
           const len = sliced.length;
           const last = sliced.slice(len - 1, len)[0];
 
-          return SYMBOLS.includes(last) || last === undefined
+          return symbols.includes(last) || last === undefined
             ? [...sliced]
             : [...sliced, "-"];
         });
@@ -119,11 +122,12 @@ function App() {
 
       case 6: // +
         setExpress((prev) => {
+          const symbols = ['+', '-', '×', '÷', '('];
           const sliced = prev.slice();
           const len = sliced.length;
           const last = sliced.slice(len - 1, len)[0];
 
-          return SYMBOLS.includes(last) || last === undefined
+          return symbols.includes(last) || last === undefined
             ? [...sliced]
             : [...sliced, "+"];
         });
