@@ -24,23 +24,29 @@ export type SignBtnType = {
 };
 
 const SYMBOLS = ["C", "( )", "%", "÷", "×", "-", "+", "=", ".", "+/-"];
+let OPARS = 0;
 
 function App() {
   const [express, setExpress] = useState<Array<string>>([]);
 
   function clickDigit(digit: number) {
     setExpress((prev) => {
-      const symbols = ["%", "÷", "×", "-", "+", "(", ")"];
+      const symbols = ["%", "÷", "×", "-", "+", "("];
       const sliced = prev.slice();
       const last = sliced.splice(sliced.length - 1, 1)[0];
 
       if (last === undefined) {
         return [`${digit}`];
       } else {
-        if (!symbols.includes(last)) {
-          return [...sliced, last + `${digit}`];
-        } else {
-          return [...sliced, last, `${digit}`];
+        if (last === ")") {
+          return [...sliced, last, "×", `${digit}`];
+        }
+        else {
+          if (!symbols.includes(last)) {
+            return [...sliced, last + `${digit}`];
+          } else {
+            return [...sliced, last, `${digit}`];
+          }
         }
       }
     });
@@ -55,6 +61,14 @@ function App() {
         const len = last.length;
         let newLast = "";
 
+        if (last[len - 1] === '(') {
+          OPARS--;
+        }
+
+        if (last[len - 1] === ')') {
+          OPARS++;
+        }
+
         for (let i = 0; i < len - 1; i++) {
           newLast += last[i];
         }
@@ -67,15 +81,55 @@ function App() {
   }
 
   function clickSymbol(symbol: string) {
-    // const symbols = ["(", ")", "%", "÷", "×", "-", "+", ".",];
     const index = SYMBOLS.indexOf(symbol);
 
     switch (index) {
       case 0: // C
         setExpress([]);
+        OPARS = 0;
         break;
 
       case 1: // ()
+        setExpress((prev) => {
+          const symbols = ["+", "-", "÷", "×"];
+          const sliced = prev.slice();
+          const len = sliced.length;
+          const last = sliced.slice(len - 1, len)[0];
+
+          if (last === undefined) {
+            OPARS++;
+            return ["("];
+          } else {
+            if (last === "(") {
+              OPARS++;
+              return [...sliced, "("];
+            } else {
+              if (!isNaN(Number(last))) {
+                console.log(OPARS);
+                if (OPARS === 0) {
+                  OPARS++;
+                  return [...sliced, "×", "("];
+                } else {
+                  OPARS--;
+                  return [...sliced, ")"];
+                }
+              } else {
+                if (symbols.includes(last)) {
+                  OPARS++;
+                  return [...sliced, "("];
+                } else {
+                  if (last === ")" && OPARS > 0) {
+                    OPARS--;
+                    return [...sliced, ")"];
+                  } else {
+                    OPARS++;
+                    return [...sliced, "×", "("];
+                  }
+                }
+              }
+            }
+          }
+        });
         break;
 
       case 2: // %
@@ -83,7 +137,7 @@ function App() {
 
       case 3: // ÷
         setExpress((prev) => {
-          const symbols = ['÷', '×', '+', '-', '('];
+          const symbols = ["÷", "×", "+", "-", "("];
           const sliced = prev.slice();
           const len = sliced.length;
           const last = sliced.slice(len - 1, len)[0];
@@ -96,7 +150,7 @@ function App() {
 
       case 4: // ×
         setExpress((prev) => {
-          const symbols = ['÷', '×', '+', '-', '('];
+          const symbols = ["÷", "×", "+", "-", "("];
           const sliced = prev.slice();
           const len = sliced.length;
           const last = sliced.slice(len - 1, len)[0];
@@ -109,7 +163,7 @@ function App() {
 
       case 5: // -
         setExpress((prev) => {
-          const symbols = ['+', '-', '×', '÷', '('];
+          const symbols = ["+", "-", "×", "÷", "("];
           const sliced = prev.slice();
           const len = sliced.length;
           const last = sliced.slice(len - 1, len)[0];
@@ -122,7 +176,7 @@ function App() {
 
       case 6: // +
         setExpress((prev) => {
-          const symbols = ['+', '-', '×', '÷', '('];
+          const symbols = ["+", "-", "×", "÷", "("];
           const sliced = prev.slice();
           const len = sliced.length;
           const last = sliced.slice(len - 1, len)[0];
@@ -139,30 +193,28 @@ function App() {
 
       case 8: // .
         setExpress((prev) => {
-          const symbols = ["+", "-", "×", "÷", '(', ')', '%'];
+          const symbols = ["+", "-", "×", "÷", "(", ")", "%"];
           const sliced = prev.slice();
           const len = sliced.length;
           const last = sliced.splice(len - 1, len)[0];
-          
+
           if (last === undefined) {
             return [];
           }
 
           if (symbols.includes(last)) {
-            return [...sliced, last, '.'];
+            return [...sliced, last, "."];
           }
 
-          if (!last.includes('.')) {
-            return [...sliced, last + '.'];
-          }
-          else {
+          if (!last.includes(".")) {
+            return [...sliced, last + "."];
+          } else {
             return [...sliced, last];
           }
         });
         break;
 
       case 9: // +/-
-        
         break;
     }
   }
@@ -269,6 +321,7 @@ function App() {
 }
 
 function lastCal(express: Array<string>) {
+  const symbols = ['+', '-', "×", "÷", '('];
   let sliced = express.slice();
 
   if (sliced.length === 0) {
@@ -278,7 +331,7 @@ function lastCal(express: Array<string>) {
   const len = sliced.length;
   const last = sliced.slice(len - 1, len)[0];
 
-  if (!SYMBOLS.includes(last)) {
+  if (!symbols.includes(last)) {
     let sLen = len;
     let newSliced: Array<string> = [];
     let res = Number(sliced[0]);
