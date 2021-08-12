@@ -40,8 +40,7 @@ function App() {
       } else {
         if (last === ")") {
           return [...sliced, last, "×", `${digit}`];
-        }
-        else {
+        } else {
           if (!symbols.includes(last)) {
             return [...sliced, last + `${digit}`];
           } else {
@@ -61,11 +60,11 @@ function App() {
         const len = last.length;
         let newLast = "";
 
-        if (last[len - 1] === '(') {
+        if (last[len - 1] === "(") {
           OPARS--;
         }
 
-        if (last[len - 1] === ')') {
+        if (last[len - 1] === ")") {
           OPARS++;
         }
 
@@ -140,11 +139,17 @@ function App() {
           const symbols = ["÷", "×", "+", "-", "("];
           const sliced = prev.slice();
           const len = sliced.length;
-          const last = sliced.slice(len - 1, len)[0];
+          const last = sliced.splice(len - 1, 1)[0];
 
-          return symbols.includes(last) || last === undefined
-            ? [...sliced]
-            : [...sliced, "÷"];
+          if (last === undefined || last === "(") {
+            return [...sliced, last];
+          } else {
+            if (symbols.includes(last)) {
+              return [...sliced, "÷"];
+            } else {
+              return [...sliced, last, "÷"];
+            }
+          }
         });
         break;
 
@@ -153,37 +158,55 @@ function App() {
           const symbols = ["÷", "×", "+", "-", "("];
           const sliced = prev.slice();
           const len = sliced.length;
-          const last = sliced.slice(len - 1, len)[0];
+          const last = sliced.splice(len - 1, 1)[0];
 
-          return symbols.includes(last) || last === undefined
-            ? [...sliced]
-            : [...sliced, "×"];
+          if (last === undefined || last === "(") {
+            return [...sliced, last];
+          } else {
+            if (symbols.includes(last)) {
+              return [...sliced, "×"];
+            } else {
+              return [...sliced, last, "×"];
+            }
+          }
         });
         break;
 
       case 5: // -
         setExpress((prev) => {
-          const symbols = ["+", "-", "×", "÷", "("];
+          const symbols = ["÷", "×", "+", "-", "("];
           const sliced = prev.slice();
           const len = sliced.length;
-          const last = sliced.slice(len - 1, len)[0];
+          const last = sliced.splice(len - 1, 1)[0];
 
-          return symbols.includes(last) || last === undefined
-            ? [...sliced]
-            : [...sliced, "-"];
+          if (last === undefined || last === "(") {
+            return [...sliced, last];
+          } else {
+            if (symbols.includes(last)) {
+              return [...sliced, "-"];
+            } else {
+              return [...sliced, last, "-"];
+            }
+          }
         });
         break;
 
       case 6: // +
         setExpress((prev) => {
-          const symbols = ["+", "-", "×", "÷", "("];
+          const symbols = ["÷", "×", "+", "-", "("];
           const sliced = prev.slice();
           const len = sliced.length;
-          const last = sliced.slice(len - 1, len)[0];
+          const last = sliced.splice(len - 1, 1)[0];
 
-          return symbols.includes(last) || last === undefined
-            ? [...sliced]
-            : [...sliced, "+"];
+          if (last === undefined || last === "(") {
+            return [...sliced, last];
+          } else {
+            if (symbols.includes(last)) {
+              return [...sliced, "+"];
+            } else {
+              return [...sliced, last, "+"];
+            }
+          }
         });
         break;
 
@@ -193,13 +216,17 @@ function App() {
 
       case 8: // .
         setExpress((prev) => {
-          const symbols = ["+", "-", "×", "÷", "(", ")", "%"];
+          const symbols = ["+", "-", "×", "÷", "(", "%"];
           const sliced = prev.slice();
           const len = sliced.length;
           const last = sliced.splice(len - 1, len)[0];
 
           if (last === undefined) {
             return [];
+          }
+
+          if (last === ')') {
+            return [...sliced, last, '×', '.'];
           }
 
           if (symbols.includes(last)) {
@@ -321,7 +348,7 @@ function App() {
 }
 
 function lastCal(express: Array<string>) {
-  const symbols = ['+', '-', "×", "÷", '('];
+  const symbols = ["+", "-", "×", "÷", "("];
   let sliced = express.slice();
 
   if (sliced.length === 0) {
