@@ -132,6 +132,18 @@ function App() {
         break;
 
       case 2: // %
+        setExpress((prev) => {
+          const sliced = prev.slice();
+          const len = sliced.length;
+          const last = sliced.slice(len - 1)[0];
+
+          if (sliced.length === 0 || last === '%') {
+            return sliced;
+          }
+          else {
+            return [...prev, '%'];
+          }
+        });
         break;
 
       case 3: // ÷
