@@ -225,8 +225,8 @@ function App() {
             return [];
           }
 
-          if (last === ')') {
-            return [...sliced, last, '×', '.'];
+          if (last === ")") {
+            return [...sliced, last, "×", "."];
           }
 
           if (symbols.includes(last)) {
@@ -242,6 +242,46 @@ function App() {
         break;
 
       case 9: // +/-
+        setExpress((prev) => {
+          const symbols = ["-", "+", "×", "÷", "(", "%"];
+          const sliced = prev.slice();
+          const len = sliced.length;
+          const last = sliced.splice(len - 1, 1)[0];
+
+          if (last === undefined) {
+            OPARS++;
+            return ["(", "-"];
+          } else {
+            const sLen = sliced.length;
+            if (sliced[sLen - 1] === "(" && last === '-') {
+              OPARS--;
+              sliced.splice(sLen - 1, 1);
+              return sliced;
+            } else {
+              if (last === ")") {
+                OPARS++;
+                return [...sliced, last, "×", "(", "-"];
+              } else {
+                if (symbols.includes(last)) {
+                  OPARS++;
+                  return [...sliced, last, "(", "-"];
+                } else {
+                  const sLen = sliced.length;
+                  if (sliced[sLen - 2] + sliced[sLen - 1] === "(-") {
+                    OPARS--;
+                    sliced.splice(sLen - 2, 2);
+                    return [...sliced, last];
+                  }
+                  else {
+                    OPARS++;
+                    return [...sliced, "(", "-", last];
+
+                  }
+                }
+              }
+            }
+          }
+        });
         break;
     }
   }
