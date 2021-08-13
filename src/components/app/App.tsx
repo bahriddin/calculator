@@ -253,7 +253,7 @@ function App() {
             return ["(", "-"];
           } else {
             const sLen = sliced.length;
-            if (sliced[sLen - 1] === "(" && last === '-') {
+            if (sliced[sLen - 1] === "(" && last === "-") {
               OPARS--;
               sliced.splice(sLen - 1, 1);
               return sliced;
@@ -271,11 +271,9 @@ function App() {
                     OPARS--;
                     sliced.splice(sLen - 2, 2);
                     return [...sliced, last];
-                  }
-                  else {
+                  } else {
                     OPARS++;
                     return [...sliced, "(", "-", last];
-
                   }
                 }
               }
@@ -393,6 +391,10 @@ function lastCal(express: Array<string>) {
 
   if (sliced.length === 0) {
     return [];
+  }
+
+  if (sliced[0] === '-') {
+    sliced.splice(0, 2, `-${sliced[1]}`);
   }
 
   const len = sliced.length;
