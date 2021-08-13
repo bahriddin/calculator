@@ -104,7 +104,6 @@ function App() {
               return [...sliced, "("];
             } else {
               if (!isNaN(Number(last))) {
-                console.log(OPARS);
                 if (OPARS === 0) {
                   OPARS++;
                   return [...sliced, "×", "("];
@@ -133,33 +132,37 @@ function App() {
 
       case 2: // %
         setExpress((prev) => {
+          const symbols = ["+", "-", "×", "÷", "%", "("];
           const sliced = prev.slice();
           const len = sliced.length;
           const last = sliced.slice(len - 1)[0];
 
-          if (sliced.length === 0 || last === '%') {
+          if (sliced.length === 0 || symbols.includes(last)) {
             return sliced;
-          }
-          else {
-            return [...prev, '%'];
+          } else {
+            return [...sliced, "%"];
           }
         });
         break;
 
       case 3: // ÷
         setExpress((prev) => {
-          const symbols = ["÷", "×", "+", "-", "("];
+          const symbols = ["÷", "×", "+", "-"];
           const sliced = prev.slice();
           const len = sliced.length;
           const last = sliced.splice(len - 1, 1)[0];
 
-          if (last === undefined || last === "(") {
-            return [...sliced, last];
+          if (last === undefined) {
+            return [];
           } else {
-            if (symbols.includes(last)) {
-              return [...sliced, "÷"];
+            if (last === "(") {
+              return [...sliced, "("];
             } else {
-              return [...sliced, last, "÷"];
+              if (symbols.includes(last)) {
+                return [...sliced, "÷"];
+              } else {
+                return [...sliced, last, "÷"];
+              }
             }
           }
         });
@@ -167,18 +170,22 @@ function App() {
 
       case 4: // ×
         setExpress((prev) => {
-          const symbols = ["÷", "×", "+", "-", "("];
+          const symbols = ["÷", "×", "+", "-"];
           const sliced = prev.slice();
           const len = sliced.length;
           const last = sliced.splice(len - 1, 1)[0];
 
-          if (last === undefined || last === "(") {
-            return [...sliced, last];
+          if (last === undefined) {
+            return [];
           } else {
-            if (symbols.includes(last)) {
-              return [...sliced, "×"];
+            if (last === "(") {
+              return [...sliced, "("];
             } else {
-              return [...sliced, last, "×"];
+              if (symbols.includes(last)) {
+                return [...sliced, "×"];
+              } else {
+                return [...sliced, last, "×"];
+              }
             }
           }
         });
@@ -186,18 +193,22 @@ function App() {
 
       case 5: // -
         setExpress((prev) => {
-          const symbols = ["÷", "×", "+", "-", "("];
+          const symbols = ["÷", "×", "+", "-"];
           const sliced = prev.slice();
           const len = sliced.length;
           const last = sliced.splice(len - 1, 1)[0];
 
-          if (last === undefined || last === "(") {
-            return [...sliced, last];
+          if (last === undefined) {
+            return [];
           } else {
-            if (symbols.includes(last)) {
-              return [...sliced, "-"];
+            if (last === "(") {
+              return [...sliced, "("];
             } else {
-              return [...sliced, last, "-"];
+              if (symbols.includes(last)) {
+                return [...sliced, "-"];
+              } else {
+                return [...sliced, last, "-"];
+              }
             }
           }
         });
@@ -205,18 +216,22 @@ function App() {
 
       case 6: // +
         setExpress((prev) => {
-          const symbols = ["÷", "×", "+", "-", "("];
+          const symbols = ["÷", "×", "+", "-"];
           const sliced = prev.slice();
           const len = sliced.length;
           const last = sliced.splice(len - 1, 1)[0];
 
-          if (last === undefined || last === "(") {
-            return [...sliced, last];
+          if (last === undefined) {
+            return [];
           } else {
-            if (symbols.includes(last)) {
-              return [...sliced, "+"];
+            if (last === "(") {
+              return [...sliced, "("];
             } else {
-              return [...sliced, last, "+"];
+              if (symbols.includes(last)) {
+                return [...sliced, "+"];
+              } else {
+                return [...sliced, last, "+"];
+              }
             }
           }
         });
@@ -255,7 +270,7 @@ function App() {
 
       case 9: // +/-
         setExpress((prev) => {
-          const symbols = ["-", "+", "×", "÷", "(", "%"];
+          const symbols = ["-", "+", "×", "÷", "("];
           const sliced = prev.slice();
           const len = sliced.length;
           const last = sliced.splice(len - 1, 1)[0];
@@ -270,7 +285,7 @@ function App() {
               sliced.splice(sLen - 1, 1);
               return sliced;
             } else {
-              if (last === ")") {
+              if (last === ")" || last === "%") {
                 OPARS++;
                 return [...sliced, last, "×", "(", "-"];
               } else {
@@ -405,12 +420,12 @@ function lastCal(express: Array<string>) {
     return [];
   }
 
-  if (sliced[0] === '-') {
+  if (sliced[0] === "-") {
     sliced.splice(0, 2, `-${sliced[1]}`);
   }
 
-  if (sliced.includes('%')) {
-    const ind = sliced.indexOf('%');
+  if (sliced.includes("%")) {
+    const ind = sliced.indexOf("%");
     sliced.splice(ind - 1, 2, `${Number(sliced[ind - 1]) / 100}`);
   }
 
