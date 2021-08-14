@@ -13,6 +13,7 @@ import { clickMultiply } from '../../functions';
 import { clickSubt } from '../../functions';
 import { clickAdd } from '../../functions';
 import { lastCal } from '../../functions';
+import { fixNum } from '../../functions';
 import { clickPoint } from '../../functions';
 import { clickOppTog } from '../../functions'; 
 
@@ -92,9 +93,8 @@ function App() {
       case 7: // =
         setExpress((prev) => {
           const res = lastCal(prev, OPARS);
-          // console.log('OPARS = ', OPARS);
           OPARS = res[1];
-          return res[0];
+          return [fixNum(res[0][0])];
         });
         break;
 

@@ -277,18 +277,20 @@ function findPars(express: Array<string>, OPARS: number): [number[], number] {
       }
     }
   }
-  
+
   if (endPar !== -1) {
     return [[begPar, endPar], OPARS];
-  }
-  else {
+  } else {
     OPARS--;
     return [[begPar, express.length], OPARS];
   }
 }
 
 // for last calculation for equal btn in clickSymbol function
-export function lastCal(express: Array<string>, OPARS: number): [string[], number] {
+export function lastCal(
+  express: Array<string>,
+  OPARS: number
+): [string[], number] {
   let opars = OPARS;
   if (!express.includes("(") && !express.includes(")")) {
     return [simpleCal(express), opars];
@@ -299,7 +301,20 @@ export function lastCal(express: Array<string>, OPARS: number): [string[], numbe
     const first = express.slice(0, parInds[0]);
     const erasedPar = express.slice(parInds[0] + 1, parInds[1]);
     const left = express.slice(parInds[1] + 1);
-    return [lastCal([...first, lastCal(erasedPar, opars)[0][0], ...left], opars)[0], opars];
+    return [
+      lastCal([...first, lastCal(erasedPar, opars)[0][0], ...left], opars)[0],
+      opars,
+    ];
+  }
+}
+
+export function fixNum(num: string) {
+  if (num.includes(".")) {
+    const ind = num.indexOf(".");
+    const frac = num.slice(ind + 1);
+    return frac.length > 10 ? `${Number(num).toFixed(10)}` : num;
+  } else {
+    return num;
   }
 }
 
