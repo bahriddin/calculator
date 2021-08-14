@@ -90,7 +90,12 @@ function App() {
         break;
 
       case 7: // =
-        setExpress((prev) => lastCal(prev));
+        setExpress((prev) => {
+          const res = lastCal(prev, OPARS);
+          // console.log('OPARS = ', OPARS);
+          OPARS = res[1];
+          return res[0];
+        });
         break;
 
       case 8: // .

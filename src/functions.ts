@@ -255,7 +255,7 @@ function simpleCal(express: Array<string>) {
 }
 
 // for determine parentheses indexes
-function findPars(express: Array<string>) {
+function findPars(express: Array<string>, OPARS: number): [number[], number] {
   const len = express.length;
   let begPar = -1,
     endPar = -1;
@@ -277,19 +277,29 @@ function findPars(express: Array<string>) {
       }
     }
   }
-  return (endPar !== -1) ? [begPar, endPar] : [begPar, express.length];
+  
+  if (endPar !== -1) {
+    return [[begPar, endPar], OPARS];
+  }
+  else {
+    OPARS--;
+    return [[begPar, express.length], OPARS];
+  }
 }
 
 // for last calculation for equal btn in clickSymbol function
-export function lastCal(express: Array<string>): string[] {
+export function lastCal(express: Array<string>, OPARS: number): [string[], number] {
+  let opars = OPARS;
   if (!express.includes("(") && !express.includes(")")) {
-    return simpleCal(express);
+    return [simpleCal(express), opars];
   } else {
-    const parInds = findPars(express);
+    const findPar = findPars(express, opars);
+    const parInds = findPar[0];
+    opars = findPar[1];
     const first = express.slice(0, parInds[0]);
     const erasedPar = express.slice(parInds[0] + 1, parInds[1]);
     const left = express.slice(parInds[1] + 1);
-    return lastCal([...first, lastCal(erasedPar)[0], ...left]);
+    return [lastCal([...first, lastCal(erasedPar, opars)[0][0], ...left], opars)[0], opars];
   }
 }
 
