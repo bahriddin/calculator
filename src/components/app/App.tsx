@@ -412,7 +412,7 @@ function App() {
   );
 }
 
-function lastCal(express: Array<string>) {
+function simpleCal(express: Array<string>) {
   const symbols = ["+", "-", "×", "÷", "("];
   let sliced = express.slice();
 
@@ -469,6 +469,44 @@ function lastCal(express: Array<string>) {
   } else {
     return sliced;
   }
+}
+
+function lastCal(express: Array<string>): string[] {
+  if (!express.includes('(') && !express.includes(')')) {
+    return simpleCal(express);
+  }
+  else {
+    const parInd = findPars(express);
+    const first = express.slice(0, parInd[0]);
+    const erasedPar = express.slice(parInd[0] + 1, parInd[1]);
+    const left = express.slice(parInd[1] + 1);
+    return lastCal([...first, lastCal(erasedPar)[0], ...left]);
+  }
+}
+
+function findPars(express: Array<string>) {
+  const len = express.length;
+  let begPar = -1, endPar = -1;
+  let oPars = 0;
+
+  for (let i = 0; i < len; i++) {
+    if (express[i] === '(') {
+      oPars++;
+      if (begPar < 0) {
+        begPar = i;
+      }
+    }
+
+    if (express[i] === ')') {
+      oPars--;
+      if (oPars === 0) {
+        endPar = i;
+        break;
+      }
+    }
+  }
+
+  return [begPar, endPar];
 }
 
 export default App;
