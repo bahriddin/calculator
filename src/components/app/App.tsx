@@ -249,7 +249,7 @@ function App() {
           const last = sliced.splice(len - 1, len)[0];
 
           if (last === undefined) {
-            return [];
+            return ['0.'];
           }
 
           if (last === ")" || last === '%') {
