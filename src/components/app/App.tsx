@@ -31,14 +31,14 @@ function App() {
 
   function clickDigit(digit: number) {
     setExpress((prev) => {
-      const symbols = ["%", "÷", "×", "-", "+", "("];
+      const symbols = ["÷", "×", "-", "+", "("];
       const sliced = prev.slice();
       const last = sliced.splice(sliced.length - 1, 1)[0];
 
       if (last === undefined) {
         return [`${digit}`];
       } else {
-        if (last === ")") {
+        if (last === ")" || last === '%') {
           return [...sliced, last, "×", `${digit}`];
         } else {
           if (!symbols.includes(last)) {
@@ -476,10 +476,10 @@ function lastCal(express: Array<string>): string[] {
     return simpleCal(express);
   }
   else {
-    const parInd = findPars(express);
-    const first = express.slice(0, parInd[0]);
-    const erasedPar = express.slice(parInd[0] + 1, parInd[1]);
-    const left = express.slice(parInd[1] + 1);
+    const parInds = findPars(express);
+    const first = express.slice(0, parInds[0]);
+    const erasedPar = express.slice(parInds[0] + 1, parInds[1]);
+    const left = express.slice(parInds[1] + 1);
     return lastCal([...first, lastCal(erasedPar)[0], ...left]);
   }
 }
