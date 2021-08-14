@@ -243,7 +243,7 @@ function App() {
 
       case 8: // .
         setExpress((prev) => {
-          const symbols = ["+", "-", "×", "÷", "(", "%"];
+          const symbols = ["+", "-", "×", "÷", "("];
           const sliced = prev.slice();
           const len = sliced.length;
           const last = sliced.splice(len - 1, len)[0];
@@ -252,12 +252,12 @@ function App() {
             return [];
           }
 
-          if (last === ")") {
-            return [...sliced, last, "×", "."];
+          if (last === ")" || last === '%') {
+            return [...sliced, last, "×", "0."];
           }
 
           if (symbols.includes(last)) {
-            return [...sliced, last, "."];
+            return [...sliced, last, "0."];
           }
 
           if (!last.includes(".")) {
