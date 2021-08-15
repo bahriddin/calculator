@@ -1,8 +1,9 @@
 import { Row, Col } from "react-bootstrap";
 import DigitBtn from "../digitBtn/DigitBtn";
 import SymbolBtn from "../symbolBtn/SymbolBtn";
+import { RowType } from '../app/App';
 
-function BtnRow(row: [string | number, string, string, Function][]) {
+function BtnRow(row: RowType) {
   return (
     <Row xs={4}>
       {typeof row[0][0] === "number" ? (

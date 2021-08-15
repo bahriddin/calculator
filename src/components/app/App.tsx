@@ -1,9 +1,8 @@
 import "./App.css";
-import DigitBtn from "../digitBtn/DigitBtn";
 import BackspaceBtn from "../backspaceBtn/BackspaceBtn";
-import SymbolBtn from "../symbolBtn/SymbolBtn";
+import BtnRow from "../btnRow/BtnRow";
 import { useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { addDigit } from "../../functions";
 import { eraseLastChar } from "../../functions";
 import { clickPars } from "../../functions";
@@ -34,12 +33,47 @@ export type SignBtnType = {
   color?: string;
   bg?: string;
 };
+export type RowType = [string | number, string, string, Function][];
 
 const SYMBOLS = ["C", "( )", "%", "÷", "×", "-", "+", "=", ".", "+/-"];
 let OPARS = 0;
 
 function App() {
   const [express, setExpress] = useState<Array<string>>([]);
+  const row1: RowType = [
+    ['C', '#e1694e', '#f8f8f8', clickSymbol],
+    ['( )', '#68b31a', '#f8f8f8', clickSymbol],
+    ['%', '#68b31a', '#f8f8f8', clickSymbol],
+    ['÷', '#68b31a', '#f8f8f8', clickSymbol],
+  ];
+
+  const row2: RowType = [
+    [7, '#555', '#f8f8f8', clickDigit],
+    [8, '#555', '#f8f8f8', clickDigit],
+    [9, '#555', '#f8f8f8', clickDigit],
+    ['×', '#68b31a', '#f8f8f8', clickSymbol],
+  ];
+
+  const row3: RowType = [
+    [4, '#555', '#f8f8f8', clickDigit],
+    [5, '#555', '#f8f8f8', clickDigit],
+    [6, '#555', '#f8f8f8', clickDigit],
+    ['-', '#68b31a', '#f8f8f8', clickSymbol],
+  ];
+
+  const row4: RowType = [
+    [1, '#555', '#f8f8f8', clickDigit],
+    [2, '#555', '#f8f8f8', clickDigit],
+    [3, '#555', '#f8f8f8', clickDigit],
+    ['+', '#68b31a', '#f8f8f8', clickSymbol],
+  ];
+
+  const row5: RowType = [
+    ['+/-', '#555', '#f8f8f8', clickSymbol],
+    [0, '#555', '#f8f8f8', clickDigit],
+    ['.', '#555', '#f8f8f8', clickSymbol],
+    ['=', '#fff', '#68b31a', clickSymbol],
+  ];
 
   function clickDigit(digit: number) {
     setExpress((prev) => addDigit(prev, digit));
@@ -123,89 +157,11 @@ function App() {
         </div>
         <div className="height-56 bottom-sec">
           <div className="py-4 h-100 d-flex flex-column justify-content-between align-items-center">
-            <Row xs={4}>
-              <Col>
-                <SymbolBtn sign="C" color="#e1694e" clickSymbol={clickSymbol} />
-              </Col>
-              <Col>
-                <SymbolBtn
-                  sign="( )"
-                  color="#68b31a"
-                  clickSymbol={clickSymbol}
-                />
-              </Col>
-              <Col>
-                <SymbolBtn sign="%" color="#68b31a" clickSymbol={clickSymbol} />
-              </Col>
-              <Col>
-                <SymbolBtn sign="÷" color="#68b31a" clickSymbol={clickSymbol} />
-              </Col>
-            </Row>
-
-            <Row xs={4}>
-              <Col>
-                <DigitBtn digit={7} clickDigit={clickDigit} />
-              </Col>
-              <Col>
-                <DigitBtn digit={8} clickDigit={clickDigit} />
-              </Col>
-              <Col>
-                <DigitBtn digit={9} clickDigit={clickDigit} />
-              </Col>
-              <Col>
-                <SymbolBtn sign="×" color="#68b31a" clickSymbol={clickSymbol} />
-              </Col>
-            </Row>
-
-            <Row xs={4}>
-              <Col>
-                <DigitBtn digit={4} clickDigit={clickDigit} />
-              </Col>
-              <Col>
-                <DigitBtn digit={5} clickDigit={clickDigit} />
-              </Col>
-              <Col>
-                <DigitBtn digit={6} clickDigit={clickDigit} />
-              </Col>
-              <Col>
-                <SymbolBtn sign="-" color="#68b31a" clickSymbol={clickSymbol} />
-              </Col>
-            </Row>
-
-            <Row xs={4}>
-              <Col>
-                <DigitBtn digit={1} clickDigit={clickDigit} />
-              </Col>
-              <Col>
-                <DigitBtn digit={2} clickDigit={clickDigit} />
-              </Col>
-              <Col>
-                <DigitBtn digit={3} clickDigit={clickDigit} />
-              </Col>
-              <Col>
-                <SymbolBtn sign="+" color="#68b31a" clickSymbol={clickSymbol} />
-              </Col>
-            </Row>
-
-            <Row xs={4}>
-              <Col>
-                <SymbolBtn sign="+/-" clickSymbol={clickSymbol} />
-              </Col>
-              <Col>
-                <DigitBtn digit={0} clickDigit={clickDigit} />
-              </Col>
-              <Col>
-                <SymbolBtn sign="." clickSymbol={clickSymbol} />
-              </Col>
-              <Col>
-                <SymbolBtn
-                  sign="="
-                  color="#fff"
-                  bg="#68b31a"
-                  clickSymbol={clickSymbol}
-                />
-              </Col>
-            </Row>
+            <BtnRow {...row1} />
+            <BtnRow {...row2} />
+            <BtnRow {...row3} />
+            <BtnRow {...row4} />
+            <BtnRow {...row5} />
           </div>
         </div>
       </div>
