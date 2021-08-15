@@ -1,7 +1,7 @@
 import "./SignBtn.css";
 import { SignBtnType } from "../app/App";
 
-function DigitBtn({ sign, color, bg }: SignBtnType) {
+function SignBtn({ sign, color, bg }: SignBtnType) {
   return (
     <div
       style={{ color: color, backgroundColor: bg }}
@@ -14,4 +14,4 @@ function DigitBtn({ sign, color, bg }: SignBtnType) {
   );
 }
 
-export default DigitBtn;
+export default SignBtn;
