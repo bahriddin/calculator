@@ -1,11 +1,18 @@
-import { TiBackspaceOutline } from 'react-icons/ti';
+import "./BackspaceBtn.css";
+import { TiBackspaceOutline } from "react-icons/ti";
 
-function BackspaceBtn({backspace}: {backspace: Function}) {
-    return (
-        <div onClick={() => {console.log('backspace'); backspace()}}>
-            <TiBackspaceOutline size="30px" color="#68b31a" />
-        </div>
-    );
+function BackspaceBtn({ backspace }: { backspace: Function }) {
+  return (
+    <div
+      className="backspaceBtn-div d-flex justify-content-center align-items-center"
+      onClick={() => {
+        console.log("backspace");
+        backspace();
+      }}
+    >
+      <TiBackspaceOutline size="30px" color="#68b31a" />
+    </div>
+  );
 }
 
 export default BackspaceBtn;

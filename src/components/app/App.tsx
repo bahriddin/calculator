@@ -8,13 +8,13 @@ import { eraseLastChar } from "../../functions";
 import { clickPars } from "../../functions";
 import { clickPercent } from "../../functions";
 import { clickDivide } from "../../functions";
-import { clickMultiply } from '../../functions'; 
-import { clickSubt } from '../../functions';
-import { clickAdd } from '../../functions';
-import { lastCal } from '../../functions';
-import { fixNum } from '../../functions';
-import { clickPoint } from '../../functions';
-import { clickOppTog } from '../../functions'; 
+import { clickMultiply } from "../../functions";
+import { clickSubt } from "../../functions";
+import { clickAdd } from "../../functions";
+import { lastCal } from "../../functions";
+import { fixNum } from "../../functions";
+import { clickPoint } from "../../functions";
+import { clickOppTog } from "../../functions";
 
 export type DigitBtnType = {
   digit: number;
@@ -41,38 +41,38 @@ let OPARS = 0;
 function App() {
   const [express, setExpress] = useState<Array<string>>([]);
   const row1: RowType = [
-    ['C', '#e1694e', '#f8f8f8', clickSymbol],
-    ['( )', '#68b31a', '#f8f8f8', clickSymbol],
-    ['%', '#68b31a', '#f8f8f8', clickSymbol],
-    ['÷', '#68b31a', '#f8f8f8', clickSymbol],
+    ["C", "#e1694e", "#f8f8f8", clickSymbol],
+    ["( )", "#68b31a", "#f8f8f8", clickSymbol],
+    ["%", "#68b31a", "#f8f8f8", clickSymbol],
+    ["÷", "#68b31a", "#f8f8f8", clickSymbol],
   ];
 
   const row2: RowType = [
-    [7, '#555', '#f8f8f8', clickDigit],
-    [8, '#555', '#f8f8f8', clickDigit],
-    [9, '#555', '#f8f8f8', clickDigit],
-    ['×', '#68b31a', '#f8f8f8', clickSymbol],
+    [7, "#555", "#f8f8f8", clickDigit],
+    [8, "#555", "#f8f8f8", clickDigit],
+    [9, "#555", "#f8f8f8", clickDigit],
+    ["×", "#68b31a", "#f8f8f8", clickSymbol],
   ];
 
   const row3: RowType = [
-    [4, '#555', '#f8f8f8', clickDigit],
-    [5, '#555', '#f8f8f8', clickDigit],
-    [6, '#555', '#f8f8f8', clickDigit],
-    ['-', '#68b31a', '#f8f8f8', clickSymbol],
+    [4, "#555", "#f8f8f8", clickDigit],
+    [5, "#555", "#f8f8f8", clickDigit],
+    [6, "#555", "#f8f8f8", clickDigit],
+    ["-", "#68b31a", "#f8f8f8", clickSymbol],
   ];
 
   const row4: RowType = [
-    [1, '#555', '#f8f8f8', clickDigit],
-    [2, '#555', '#f8f8f8', clickDigit],
-    [3, '#555', '#f8f8f8', clickDigit],
-    ['+', '#68b31a', '#f8f8f8', clickSymbol],
+    [1, "#555", "#f8f8f8", clickDigit],
+    [2, "#555", "#f8f8f8", clickDigit],
+    [3, "#555", "#f8f8f8", clickDigit],
+    ["+", "#68b31a", "#f8f8f8", clickSymbol],
   ];
 
   const row5: RowType = [
-    ['+/-', '#555', '#f8f8f8', clickSymbol],
-    [0, '#555', '#f8f8f8', clickDigit],
-    ['.', '#555', '#f8f8f8', clickSymbol],
-    ['=', '#fff', '#68b31a', clickSymbol],
+    ["+/-", "#555", "#f8f8f8", clickSymbol],
+    [0, "#555", "#f8f8f8", clickDigit],
+    [".", "#555", "#f8f8f8", clickSymbol],
+    ["=", "#fff", "#68b31a", clickSymbol],
   ];
 
   function clickDigit(digit: number) {
@@ -151,7 +151,7 @@ function App() {
       <div className="height-100 px-2">
         <div className="height-44 top-sec d-flex flex-column justify-content-between">
           <h1>{express}</h1>
-          <div className="mb-4 pr-3 d-flex justify-content-end">
+          <div className="mb-3 pr-3 d-flex justify-content-end">
             <BackspaceBtn backspace={backspace} />
           </div>
         </div>
