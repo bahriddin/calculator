@@ -32,6 +32,7 @@ export type SignBtnType = {
   sign: string | number | JSX.Element;
   color?: string;
   bg?: string;
+  click: Function;
 };
 export type RowType = [string | number, string, string, Function][];
 

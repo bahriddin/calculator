@@ -11,7 +11,7 @@ function DigitBtn({ digit, color, bg, clickDigit }: DigitBtnType) {
       }}
       className="digitBtn-div"
     >
-      <SignBtn sign={digit} color={color} bg={bg} />
+      {/* <SignBtn sign={digit} color={color} bg={bg} /> */}
     </div>
   );
 }
