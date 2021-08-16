@@ -16,18 +16,6 @@ import { fixNum } from "../../functions";
 import { clickPoint } from "../../functions";
 import { clickOppTog } from "../../functions";
 
-export type DigitBtnType = {
-  digit: number;
-  color?: string;
-  bg?: string;
-  clickDigit: Function;
-};
-export type SymbolBtnType = {
-  sign: string;
-  color?: string;
-  bg?: string;
-  clickSymbol: Function;
-};
 export type SignBtnType = {
   sign: string | number;
   color?: string;
