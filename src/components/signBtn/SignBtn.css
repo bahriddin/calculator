@@ -10,9 +10,16 @@
   -khtml-user-select: none; /* Konqueror HTML */
   -moz-user-select: none; /* Old versions of Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; 
+  user-select: none;
 }
 
 .sign-div:hover {
-    cursor: pointer;
-} 
+  cursor: pointer;
+}
+
+@media (max-width: 431px) {
+  .sign-div {
+    width: 69px;
+    height: 69px;
+  }
+}

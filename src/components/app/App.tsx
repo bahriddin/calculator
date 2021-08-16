@@ -149,13 +149,13 @@ function App() {
   return (
     <Container>
       <div className="height-100 px-2">
-        <div className="height-44 top-sec d-flex flex-column justify-content-between">
+        <div className="height-48 top-sec d-flex flex-column justify-content-between">
           <h1>{express}</h1>
           <div className="mb-3 pr-3 d-flex justify-content-end">
             <BackspaceBtn backspace={backspace} />
           </div>
         </div>
-        <div className="height-56 bottom-sec">
+        <div className="height-52 bottom-sec">
           <div className="py-4 h-100 d-flex flex-column justify-content-between align-items-center">
             <BtnRow {...row1} />
             <BtnRow {...row2} />
