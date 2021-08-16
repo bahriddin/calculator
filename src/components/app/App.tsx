@@ -29,7 +29,7 @@ export type SymbolBtnType = {
   clickSymbol: Function;
 };
 export type SignBtnType = {
-  sign: string | number | JSX.Element;
+  sign: string | number;
   color?: string;
   bg?: string;
   click: Function;

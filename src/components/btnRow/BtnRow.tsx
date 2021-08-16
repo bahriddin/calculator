@@ -1,6 +1,4 @@
 import { Row, Col } from "react-bootstrap";
-import DigitBtn from "../digitBtn/DigitBtn";
-import SymbolBtn from "../symbolBtn/SymbolBtn";
 import { RowType } from "../app/App";
 import SignBtn from "../signBtn/SignBtn";
 
