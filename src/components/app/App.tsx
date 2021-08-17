@@ -33,10 +33,10 @@ function App() {
   const [express, setExpress] = useState<Array<string>>([]);
   // [appBg, btnBg, digCol, clearCol, symCol, equalBg, upCol]
   const [colors, setColors] = useState<Array<string>>([
-    "#fff",
+    "#fcfcfc",
     "#f8f8f8",
-    "#555",
-    "#e1694e",
+    "#555555",
+    "#e4684c",
     "#569415",
     "#68b31a",
     "#878787",
@@ -73,12 +73,8 @@ function App() {
     ["+/-", colors[2], colors[1], clickSymbol],
     [0, colors[2], colors[1], clickDigit],
     [".", colors[2], colors[1], clickSymbol],
-    ["=", "#fff", colors[4], clickSymbol],
+    ["=", "#fafafa", colors[5], clickSymbol],
   ];
-
-  function clickDigit(digit: number) {
-    setExpress((prev) => addDigit(prev, digit));
-  }
 
   function backspace() {
     setExpress((prev) => {
@@ -86,6 +82,34 @@ function App() {
       OPARS = res[1];
       return res[0];
     });
+  }
+
+  function darkMode() {
+    const darkMode = [
+      "#010101",
+      "#1f1f1f",
+      "#fafafa",
+      "#e1694e",
+      "#9cd260",
+      "#427e04",
+      "#a5a5a5",
+    ];
+    const lightMode = [
+      "#fcfcfc",
+      "#f8f8f8",
+      "#555555",
+      "#e4684c",
+      "#569415",
+      "#68b31a",
+      "#878787",
+    ];
+    setColors((prev) => {
+      return prev[0] === "#fcfcfc" ? darkMode : lightMode;
+    });
+  }
+
+  function clickDigit(digit: number) {
+    setExpress((prev) => addDigit(prev, digit));
   }
 
   function clickSymbol(symbol: string) {
@@ -157,7 +181,7 @@ function App() {
               <div className="mr-5">
                 <HistoryBtn color={colors[6]} />
               </div>
-              <DarkModeBtn color={colors[6]} />
+              <DarkModeBtn color={colors[6]} toggle={darkMode} />
             </div>
             <BackspaceBtn backspace={backspace} />
           </div>
