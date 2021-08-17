@@ -1,9 +1,9 @@
 import { BsClock } from "react-icons/bs";
 
-function HistoryBtn() {
+function HistoryBtn({ color }: { color: string }) {
   return (
     <div className="d-flex justify-content-center align-items-center">
-      <BsClock size="23px" color="#8a8a8a" />
+      <BsClock size="23px" color={color} />
     </div>
   );
 }

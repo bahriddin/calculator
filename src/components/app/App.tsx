@@ -31,41 +31,49 @@ let OPARS = 0;
 
 function App() {
   const [express, setExpress] = useState<Array<string>>([]);
-  const [bgColor, setBgColor] = useState<string>("#fff");
-  const [digColor, setDigColor] = useState<string>("#555");
+  // [appBg, btnBg, digCol, clearCol, symCol, equalBg, upCol]
+  const [colors, setColors] = useState<Array<string>>([
+    "#fff",
+    "#f8f8f8",
+    "#555",
+    "#e1694e",
+    "#569415",
+    "#68b31a",
+    "#878787",
+  ]);
   const row1: RowType = [
-    ["C", "#e1694e", "#f8f8f8", clickSymbol],
-    ["( )", "#68b31a", "#f8f8f8", clickSymbol],
-    ["%", "#68b31a", "#f8f8f8", clickSymbol],
-    ["÷", "#68b31a", "#f8f8f8", clickSymbol],
+    ["C", colors[3], colors[1], clickSymbol],
+    ["( )", colors[4], colors[1], clickSymbol],
+    ["%", colors[4], colors[1], clickSymbol],
+    ["÷", colors[4], colors[1], clickSymbol],
   ];
 
   const row2: RowType = [
-    [7, digColor, "#f8f8f8", clickDigit],
-    [8, digColor, "#f8f8f8", clickDigit],
-    [9, digColor, "#f8f8f8", clickDigit],
-    ["×", "#68b31a", "#f8f8f8", clickSymbol],
+    [7, colors[2], colors[1], clickDigit],
+    [8, colors[2], colors[1], clickDigit],
+    [9, colors[2], colors[1], clickDigit],
+    ["×", colors[4], colors[1], clickSymbol],
   ];
 
   const row3: RowType = [
-    [4, digColor, "#f8f8f8", clickDigit],
-    [5, digColor, "#f8f8f8", clickDigit],
-    [6, digColor, "#f8f8f8", clickDigit],
-    ["-", "#68b31a", "#f8f8f8", clickSymbol],
+    [4, colors[2], colors[1], clickDigit],
+    [5, colors[2], colors[1], clickDigit],
+    [6, colors[2], colors[1], clickDigit],
+    ["-", colors[4], colors[1], clickSymbol],
   ];
 
   const row4: RowType = [
-    [1, digColor, "#f8f8f8", clickDigit],
-    [2, digColor, "#f8f8f8", clickDigit],
-    [3, digColor, "#f8f8f8", clickDigit],
-    ["+", "#68b31a", "#f8f8f8", clickSymbol],
+    [1, colors[2], colors[1], clickDigit],
+    [2, colors[2], colors[1], clickDigit],
+    [3, colors[2], colors[1], clickDigit],
+    ["+", colors[4], colors[1], clickSymbol],
   ];
 
   const row5: RowType = [
-    ["+/-", digColor, "#f8f8f8", clickSymbol],
-    [0, digColor, "#f8f8f8", clickDigit],
-    [".", digColor, "#f8f8f8", clickSymbol],
-    ["=", "#fff", "#68b31a", clickSymbol],
+    ["+/-", colors[2], colors[1], clickSymbol],
+    [0, colors[2], colors[1], clickDigit],
+    [".", colors[2], colors[1], clickSymbol],
+    ["=", "#fff", colors[4], clickSymbol],
   ];
 
   function clickDigit(digit: number) {
@@ -140,16 +148,16 @@ function App() {
   }
 
   return (
-    <Container style={{ backgroundColor: bgColor }}>
+    <Container style={{ backgroundColor: colors[0] }}>
       <div className="height-100 px-2">
         <div className="height-48 top-sec d-flex flex-column justify-content-between">
           <h1>{express}</h1>
           <div className="mb-3 px-3 d-flex justify-content-between">
             <div className="d-flex align-items-center">
               <div className="mr-5">
-                <HistoryBtn />
+                <HistoryBtn color={colors[6]} />
               </div>
-              <DarkModeBtn />
+              <DarkModeBtn color={colors[6]} />
             </div>
             <BackspaceBtn backspace={backspace} />
           </div>
