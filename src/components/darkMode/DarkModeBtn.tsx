@@ -10,7 +10,7 @@ function DarkModeBtn({ color, toggle }: { color: string; toggle: Function }) {
       }}
       className="darkmode-div d-flex justify-content-center align-items-center"
     >
-      <MdWbSunny size="25px" color={color} />
+      <MdWbSunny className="darkmode-icon-size" color={color} />
     </div>
   );
 }

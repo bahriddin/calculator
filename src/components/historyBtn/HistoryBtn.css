@@ -11,3 +11,14 @@
 .historyBtn-div:active {
   background-color: rgba(0, 0, 0, 0.25);
 }
+
+@media (max-width: 280px) {
+  .historyBtn-div {
+    width: 30px;
+    height: 30px;
+  }
+
+  .history-icon-size {
+    font-size: 20px;
+  }
+}
