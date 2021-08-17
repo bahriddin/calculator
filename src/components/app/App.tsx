@@ -31,7 +31,7 @@ let OPARS = 0;
 
 function App() {
   const [express, setExpress] = useState<Array<string>>([]);
-  // [appBg, btnBg, digCol, clearCol, symCol, equalBg, upCol]
+  // [appBg, btnBg, digCol, clearCol, symCol, equalBg, upCol, borBotCol]
   const [colors, setColors] = useState<Array<string>>([
     "#fcfcfc",
     "#f8f8f8",
@@ -40,6 +40,7 @@ function App() {
     "#569415",
     "#68b31a",
     "#878787",
+    "#f4f4f4",
   ]);
   const row1: RowType = [
     ["C", colors[3], colors[1], clickSymbol],
@@ -85,15 +86,6 @@ function App() {
   }
 
   function darkMode() {
-    const darkMode = [
-      "#010101",
-      "#1f1f1f",
-      "#fafafa",
-      "#e1694e",
-      "#9cd260",
-      "#427e04",
-      "#a5a5a5",
-    ];
     const lightMode = [
       "#fcfcfc",
       "#f8f8f8",
@@ -102,6 +94,17 @@ function App() {
       "#569415",
       "#68b31a",
       "#878787",
+      "#f4f4f4",
+    ];
+    const darkMode = [
+      "#010101",
+      "#1f1f1f",
+      "#fafafa",
+      "#e1694e",
+      "#9cd260",
+      "#427e04",
+      "#a5a5a5",
+      "#212121",
     ];
     setColors((prev) => {
       return prev[0] === "#fcfcfc" ? darkMode : lightMode;
@@ -174,7 +177,10 @@ function App() {
   return (
     <Container style={{ backgroundColor: colors[0] }}>
       <div className="height-100 px-2">
-        <div className="height-48 top-sec d-flex flex-column justify-content-between">
+        <div
+          style={{ borderBottom: `1px solid ${colors[7]}` }}
+          className="height-48 top-sec d-flex flex-column justify-content-between"
+        >
           <h1>{express}</h1>
           <div className="mb-3 px-3 d-flex justify-content-between">
             <div className="d-flex align-items-center">
