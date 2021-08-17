@@ -1,3 +1,4 @@
+import "./DarkModeBtn.css";
 import { MdWbSunny } from "react-icons/md";
 
 function DarkModeBtn({ color, toggle }: { color: string; toggle: Function }) {
@@ -7,7 +8,7 @@ function DarkModeBtn({ color, toggle }: { color: string; toggle: Function }) {
         toggle();
         console.log("darkmode");
       }}
-      className="d-flex justify-content-center align-items-center"
+      className="darkmode-div d-flex justify-content-center align-items-center"
     >
       <MdWbSunny size="25px" color={color} />
     </div>
