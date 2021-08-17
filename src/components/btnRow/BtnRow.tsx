@@ -4,7 +4,7 @@ import SignBtn from "../signBtn/SignBtn";
 
 function BtnRow(row: RowType) {
   return (
-    <Row xs={4} className="w-100">
+    <Row xs={4} className="w-100 text-center">
       <Col>
         <SignBtn
           sign={row[0][0]}
