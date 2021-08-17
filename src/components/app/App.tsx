@@ -1,6 +1,7 @@
 import "./App.css";
 import BackspaceBtn from "../backspaceBtn/BackspaceBtn";
 import DarkModeBtn from "../darkMode/DarkModeBtn";
+import HistoryBtn from "../historyBtn/HistoryBtn";
 import BtnRow from "../btnRow/BtnRow";
 import { useState } from "react";
 import { Container } from "react-bootstrap";
@@ -141,7 +142,8 @@ function App() {
       <div className="height-100 px-2">
         <div className="height-48 top-sec d-flex flex-column justify-content-between">
           <h1>{express}</h1>
-          <div className="mb-3 pr-3 d-flex justify-content-end">
+          <div className="mb-3 px-3 d-flex justify-content-end">
+            <HistoryBtn />
             <DarkModeBtn />
             <BackspaceBtn backspace={backspace} />
           </div>
