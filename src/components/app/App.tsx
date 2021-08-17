@@ -31,6 +31,8 @@ let OPARS = 0;
 
 function App() {
   const [express, setExpress] = useState<Array<string>>([]);
+  const [bgColor, setBgColor] = useState<string>("#fff");
+  const [digColor, setDigColor] = useState<string>("#555");
   const row1: RowType = [
     ["C", "#e1694e", "#f8f8f8", clickSymbol],
     ["( )", "#68b31a", "#f8f8f8", clickSymbol],
@@ -39,30 +41,30 @@ function App() {
   ];
 
   const row2: RowType = [
-    [7, "#555", "#f8f8f8", clickDigit],
-    [8, "#555", "#f8f8f8", clickDigit],
-    [9, "#555", "#f8f8f8", clickDigit],
+    [7, digColor, "#f8f8f8", clickDigit],
+    [8, digColor, "#f8f8f8", clickDigit],
+    [9, digColor, "#f8f8f8", clickDigit],
     ["×", "#68b31a", "#f8f8f8", clickSymbol],
   ];
 
   const row3: RowType = [
-    [4, "#555", "#f8f8f8", clickDigit],
-    [5, "#555", "#f8f8f8", clickDigit],
-    [6, "#555", "#f8f8f8", clickDigit],
+    [4, digColor, "#f8f8f8", clickDigit],
+    [5, digColor, "#f8f8f8", clickDigit],
+    [6, digColor, "#f8f8f8", clickDigit],
     ["-", "#68b31a", "#f8f8f8", clickSymbol],
   ];
 
   const row4: RowType = [
-    [1, "#555", "#f8f8f8", clickDigit],
-    [2, "#555", "#f8f8f8", clickDigit],
-    [3, "#555", "#f8f8f8", clickDigit],
+    [1, digColor, "#f8f8f8", clickDigit],
+    [2, digColor, "#f8f8f8", clickDigit],
+    [3, digColor, "#f8f8f8", clickDigit],
     ["+", "#68b31a", "#f8f8f8", clickSymbol],
   ];
 
   const row5: RowType = [
-    ["+/-", "#555", "#f8f8f8", clickSymbol],
-    [0, "#555", "#f8f8f8", clickDigit],
-    [".", "#555", "#f8f8f8", clickSymbol],
+    ["+/-", digColor, "#f8f8f8", clickSymbol],
+    [0, digColor, "#f8f8f8", clickDigit],
+    [".", digColor, "#f8f8f8", clickSymbol],
     ["=", "#fff", "#68b31a", clickSymbol],
   ];
 
@@ -138,13 +140,17 @@ function App() {
   }
 
   return (
-    <Container>
+    <Container style={{ backgroundColor: bgColor }}>
       <div className="height-100 px-2">
         <div className="height-48 top-sec d-flex flex-column justify-content-between">
           <h1>{express}</h1>
-          <div className="mb-3 px-3 d-flex justify-content-end">
-            <HistoryBtn />
-            <DarkModeBtn />
+          <div className="mb-3 px-3 d-flex justify-content-between">
+            <div className="d-flex align-items-center">
+              <div className="mr-5">
+                <HistoryBtn />
+              </div>
+              <DarkModeBtn />
+            </div>
             <BackspaceBtn backspace={backspace} />
           </div>
         </div>
