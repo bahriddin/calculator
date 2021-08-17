@@ -175,35 +175,37 @@ function App() {
   }
 
   return (
-    <Container style={{ backgroundColor: colors[0] }} className="width-50">
-      <div className="height-100 px-2">
-        <div
-          style={{ borderBottom: `1px solid ${colors[7]}` }}
-          className="height-48 top-sec d-flex flex-column justify-content-between"
-        >
-          <h1>{express}</h1>
+    <div className="tallest-div">
+      <Container style={{ backgroundColor: colors[0] }} className="width-50">
+        <div className="height-100 px-2">
           <div
-            className="mb-3 px-3 d-flex justify-content-between align-items-center"
-            id="upper-icons"
+            style={{ borderBottom: `1px solid ${colors[7]}` }}
+            className="height-48 top-sec d-flex flex-column justify-content-between"
           >
-            <div className="d-flex align-items-center justify-content-between left-up-icons">
-              <HistoryBtn color={colors[6]} />
-              <DarkModeBtn color={colors[6]} toggle={darkMode} />
+            <h1>{express}</h1>
+            <div
+              className="mb-3 px-3 d-flex justify-content-between align-items-center"
+              id="upper-icons"
+            >
+              <div className="d-flex align-items-center justify-content-between left-up-icons">
+                <HistoryBtn color={colors[6]} />
+                <DarkModeBtn color={colors[6]} toggle={darkMode} />
+              </div>
+              <BackspaceBtn backspace={backspace} />
             </div>
-            <BackspaceBtn backspace={backspace} />
+          </div>
+          <div className="height-52 bottom-sec">
+            <div className="py-4 h-100 d-flex flex-column justify-content-between align-items-center">
+              <BtnRow {...row1} />
+              <BtnRow {...row2} />
+              <BtnRow {...row3} />
+              <BtnRow {...row4} />
+              <BtnRow {...row5} />
+            </div>
           </div>
         </div>
-        <div className="height-52 bottom-sec">
-          <div className="py-4 h-100 d-flex flex-column justify-content-between align-items-center">
-            <BtnRow {...row1} />
-            <BtnRow {...row2} />
-            <BtnRow {...row3} />
-            <BtnRow {...row4} />
-            <BtnRow {...row5} />
-          </div>
-        </div>
-      </div>
-    </Container>
+      </Container>
+    </div>
   );
 }
 
