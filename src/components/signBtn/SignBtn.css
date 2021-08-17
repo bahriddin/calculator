@@ -21,10 +21,51 @@
   background-color: rgba(0, 0, 0, 0.25) !important;
 }
 
-@media (max-width: 431px) {
+@media (min-width: 361px) and (max-width: 375px) {
+  .col {
+    padding: 0 14px !important;
+  }
+
   .sign-div {
-    width: 69px;
-    height: 69px;
+    font-size: 26px;
+    width: 58px;
+    height: 58px;
+  }
+}
+
+@media (min-width: 321px) and (max-width: 360px) {
+  .col {
+    padding: 0 12px !important;
+  }
+
+  .sign-div {
+    font-size: 26px;
+    width: 55px;
+    height: 55px;
+  }
+}
+
+@media (min-width: 301px) and (max-width: 320px) {
+  .col {
+    padding: 0 10px !important;
+  }
+
+  .sign-div {
+    font-size: 26px;
+    width: 52px;
+    height: 52px;
+  }
+}
+
+@media (min-width: 281px) and (max-width: 300px) {
+  .col {
+    padding: 0 8px !important;
+  }
+
+  .sign-div {
+    font-size: 24px;
+    width: 52px;
+    height: 52px;
   }
 }
 
