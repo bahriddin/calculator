@@ -17,6 +17,12 @@ body {
   height: 56%;
 }
 
+@media (min-width: 768px) {
+  .width-50 {
+    width: 50% !important;
+  }
+}
+
 @media (max-width: 280px) {
   #upper-icons {
     padding: 0 5px !important;

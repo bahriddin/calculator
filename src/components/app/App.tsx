@@ -175,7 +175,7 @@ function App() {
   }
 
   return (
-    <Container style={{ backgroundColor: colors[0] }}>
+    <Container style={{ backgroundColor: colors[0] }} className="width-50">
       <div className="height-100 px-2">
         <div
           style={{ borderBottom: `1px solid ${colors[7]}` }}
