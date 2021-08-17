@@ -27,3 +27,14 @@
     height: 69px;
   }
 }
+
+@media (max-width: 280px) {
+  .col {
+    padding: 0 8px !important;
+  }
+  .sign-div {
+    font-size: 22px;
+    width: 48px;
+    height: 48px;
+  }
+}

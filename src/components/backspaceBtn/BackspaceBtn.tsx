@@ -10,7 +10,7 @@ function BackspaceBtn({ backspace }: { backspace: Function }) {
         backspace();
       }}
     >
-      <TiBackspaceOutline size="30px" color="#68b31a" />
+      <TiBackspaceOutline className="upper-icons-size" color="#68b31a" />
     </div>
   );
 }

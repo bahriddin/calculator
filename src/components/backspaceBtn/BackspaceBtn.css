@@ -11,3 +11,18 @@
 .backspaceBtn-div:active {
   background-color: rgba(0, 0, 0, 0.25);
 }
+
+.upper-icons-size {
+  font-size: 30px;
+}
+
+@media (max-width: 280px) {
+  .backspaceBtn-div {
+    width: 30px;
+    height: 30px;
+  }
+
+  .upper-icons-size {
+    font-size: 22px;
+  }
+}

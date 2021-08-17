@@ -16,3 +16,14 @@ body {
 .height-52 {
   height: 54%;
 }
+
+@media (max-width: 280px) {
+  #upper-icons {
+    padding: 0 5px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .left-up-icons {
+    width: 50%;
+  }
+}

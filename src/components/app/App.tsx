@@ -182,11 +182,12 @@ function App() {
           className="height-48 top-sec d-flex flex-column justify-content-between"
         >
           <h1>{express}</h1>
-          <div className="mb-3 px-3 d-flex justify-content-between">
-            <div className="d-flex align-items-center">
-              <div className="mr-5">
-                <HistoryBtn color={colors[6]} />
-              </div>
+          <div
+            className="mb-3 px-3 d-flex justify-content-between align-items-center"
+            id="upper-icons"
+          >
+            <div className="d-flex align-items-center justify-content-between left-up-icons">
+              <HistoryBtn color={colors[6]} />
               <DarkModeBtn color={colors[6]} toggle={darkMode} />
             </div>
             <BackspaceBtn backspace={backspace} />
