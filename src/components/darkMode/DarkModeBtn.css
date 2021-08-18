@@ -4,6 +4,10 @@
   border-radius: 50%;
 }
 
+.darkmode-icon-size {
+  font-size: 27px;
+}
+
 .darkmode-div:hover {
   cursor: pointer;
 }
@@ -12,13 +16,57 @@
   background-color: rgba(0, 0, 0, 0.25);
 }
 
-@media (max-width: 280px) {
+@media (min-width: 361px) and (max-width: 375px) {
   .darkmode-div {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
+  }
+
+  .darkmode-icon-size {
+    font-size: 23px;
+  }
+}
+
+@media (min-width: 321px) and (max-width: 360px) {
+  .darkmode-div {
+    width: 32px;
+    height: 32px;
   }
 
   .darkmode-icon-size {
     font-size: 22px;
+  }
+}
+
+@media (min-width: 301px) and (max-width: 320px) {
+  .darkmode-div {
+    width: 28px;
+    height: 28px;
+  }
+
+  .darkmode-icon-size {
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 281px) and (max-width: 300px) {
+  .darkmode-div {
+    width: 27px;
+    height: 27px;
+  }
+
+  .darkmode-icon-size {
+    font-size: 21px;
+  }
+}
+
+@media (max-width: 280px) {
+  .darkmode-div {
+    width: 26px;
+    height: 26px;
+  }
+
+  .darkmode-icon-size {
+    font-size: 20px;
   }
 }

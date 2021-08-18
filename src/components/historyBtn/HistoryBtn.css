@@ -4,6 +4,10 @@
   border-radius: 50%;
 }
 
+.history-icon-size {
+  font-size: 26px;
+}
+
 .historyBtn-div:hover {
   cursor: pointer;
 }
@@ -12,13 +16,57 @@
   background-color: rgba(0, 0, 0, 0.25);
 }
 
-@media (max-width: 280px) {
+@media (min-width: 361px) and (max-width: 375px) {
   .historyBtn-div {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
   }
 
   .history-icon-size {
     font-size: 20px;
+  }
+}
+
+@media (min-width: 321px) and (max-width: 360px) {
+  .historyBtn-div {
+    width: 32px;
+    height: 32px;
+  }
+
+  .history-icon-size {
+    font-size: 19px;
+  }
+}
+
+@media (min-width: 301px) and (max-width: 320px) {
+  .historyBtn-div {
+    width: 28px;
+    height: 28px;
+  }
+
+  .history-icon-size {
+    font-size: 19px;
+  }
+}
+
+@media (min-width: 281px) and (max-width: 300px) {
+  .historyBtn-div {
+    width: 27px;
+    height: 27px;
+  }
+
+  .history-icon-size {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 280px) {
+  .historyBtn-div {
+    width: 26px;
+    height: 26px;
+  }
+
+  .history-icon-size {
+    font-size: 18px;
   }
 }
