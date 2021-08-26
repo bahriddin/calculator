@@ -383,3 +383,34 @@ export function clickOppTog(prev: string[], OPARS: number): [string[], number] {
     }
   }
 }
+
+// for output component
+export function addCommas(num: string) {
+  if (!num.includes(".")) {
+    const len = num.length;
+    let res = "";
+
+    for (let i = len - 1; i >= 0; i -= 3) {
+      const com = i === 0 || i === 1 || i === 2 ? "" : ",";
+      const first = num[i - 2] !== undefined ? num[i - 2] : "";
+      const second = num[i - 1] !== undefined ? num[i - 1] : "";
+      res = com + first + second + num[i] + res;
+    }
+
+    return res;
+  } else {
+    const indPoint = num.indexOf(".");
+    const int = num.slice(0, indPoint);
+    const len = int.length;
+    let res = "";
+
+    for (let i = len - 1; i >= 0; i -= 3) {
+      const com = i === 0 || i === 1 || i === 2 ? "" : ",";
+      const first = int[i - 2] !== undefined ? int[i - 2] : "";
+      const second = int[i - 1] !== undefined ? int[i - 1] : "";
+      res = com + first + second + int[i] + res;
+    }
+
+    return res + num.slice(indPoint);
+  }
+}

@@ -32,7 +32,7 @@ let OPARS = 0;
 
 function App() {
   const [express, setExpress] = useState<Array<string>>([]);
-  // [appBg, btnBg, digCol, clearCol, symCol, equalBg, upCol, borBotCol, output]
+  // [appBg, btnBg, digCol, clearCol, symCol, equalBg, upCol, borBotCol, output, output's_math_operator]
   const [colors, setColors] = useState<Array<string>>([
     "#fcfcfc",
     "#f8f8f8",
@@ -43,6 +43,7 @@ function App() {
     "#878787",
     "#f4f4f4",
     "#555555",
+    "#569415",
   ]);
   const row1: RowType = [
     ["C", colors[3], colors[1], clickSymbol],
@@ -98,6 +99,7 @@ function App() {
       "#878787",
       "#f4f4f4",
       "#555555",
+      "#569415",
     ];
     const darkMode = [
       "#010101",
@@ -109,6 +111,7 @@ function App() {
       "#a5a5a5",
       "#212121",
       "#fafafa",
+      "#9cd260",
     ];
     setColors((prev) => {
       return prev[0] === "#fcfcfc" ? darkMode : lightMode;
@@ -187,7 +190,7 @@ function App() {
             className="height-48 top-sec d-flex flex-column justify-content-between"
           >
             <div style={{ overflow: "auto" }} className="mt-4 text-right">
-              <Output express={express} color={colors[8]} />
+              <Output express={express} color={colors[8]} oColor="green" />
             </div>
             <div
               className="mb-3 px-3 d-flex justify-content-between align-items-center"
