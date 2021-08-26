@@ -29,7 +29,6 @@ function Output({
           }
         })}
       </h1>
-      <h3>45</h3>
     </div>
   );
 }

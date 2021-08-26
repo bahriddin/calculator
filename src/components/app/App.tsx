@@ -189,8 +189,13 @@ function App() {
             style={{ borderBottom: `1px solid ${colors[7]}` }}
             className="height-48 top-sec d-flex flex-column justify-content-between"
           >
-            <div style={{ overflow: "auto" }} className="mt-4 text-right">
-              <Output express={express} color={colors[8]} oColor="green" />
+            <div className="d-flex flex-column justify-content-between h-75">
+              <div style={{ overflow: "auto" }} className="mt-4 text-right">
+                <Output express={express} color={colors[8]} oColor="green" />
+              </div>
+              <h3 style={{ color: colors[8] }} className="text-right">
+                45
+              </h3>
             </div>
             <div
               className="mb-3 px-3 d-flex justify-content-between align-items-center"
