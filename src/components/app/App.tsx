@@ -191,7 +191,11 @@ function App() {
           >
             <div className="d-flex flex-column justify-content-between h-75">
               <div style={{ overflow: "auto" }} className="mt-4 text-right">
-                <Output express={express} color={colors[8]} oColor="green" />
+                <Output
+                  express={express}
+                  color={colors[8]}
+                  oColor={colors[9]}
+                />
               </div>
               <h3 style={{ color: colors[8] }} className="text-right">
                 45

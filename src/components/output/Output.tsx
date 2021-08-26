@@ -1,4 +1,3 @@
-import "./Output.css";
 import { addCommas } from "../../functions";
 
 function Output({
