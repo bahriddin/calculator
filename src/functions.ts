@@ -11,7 +11,11 @@ export function addDigit(prev: string[], digit: number) {
       return [...sliced, last, "×", `${digit}`];
     } else {
       if (!symbols.includes(last)) {
-        return [...sliced, last + `${digit}`];
+        if (last !== "0") {
+          return [...sliced, last + `${digit}`];
+        } else {
+          return [...sliced, `${digit}`];
+        }
       } else {
         return [...sliced, last, `${digit}`];
       }
