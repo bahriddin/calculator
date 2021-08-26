@@ -3,6 +3,7 @@ import BackspaceBtn from "../backspaceBtn/BackspaceBtn";
 import DarkModeBtn from "../darkMode/DarkModeBtn";
 import HistoryBtn from "../historyBtn/HistoryBtn";
 import BtnRow from "../btnRow/BtnRow";
+import Output from "../output/Output";
 import { useState } from "react";
 import { Container } from "react-bootstrap";
 import { addDigit } from "../../functions";
@@ -31,7 +32,7 @@ let OPARS = 0;
 
 function App() {
   const [express, setExpress] = useState<Array<string>>([]);
-  // [appBg, btnBg, digCol, clearCol, symCol, equalBg, upCol, borBotCol]
+  // [appBg, btnBg, digCol, clearCol, symCol, equalBg, upCol, borBotCol, output]
   const [colors, setColors] = useState<Array<string>>([
     "#fcfcfc",
     "#f8f8f8",
@@ -41,6 +42,7 @@ function App() {
     "#68b31a",
     "#878787",
     "#f4f4f4",
+    "#555555",
   ]);
   const row1: RowType = [
     ["C", colors[3], colors[1], clickSymbol],
@@ -95,6 +97,7 @@ function App() {
       "#68b31a",
       "#878787",
       "#f4f4f4",
+      "#555555",
     ];
     const darkMode = [
       "#010101",
@@ -105,6 +108,7 @@ function App() {
       "#427e04",
       "#a5a5a5",
       "#212121",
+      "#fafafa",
     ];
     setColors((prev) => {
       return prev[0] === "#fcfcfc" ? darkMode : lightMode;
@@ -182,7 +186,9 @@ function App() {
             style={{ borderBottom: `1px solid ${colors[7]}` }}
             className="height-48 top-sec d-flex flex-column justify-content-between"
           >
-            <h1>{express}</h1>
+            <div style={{ overflow: "auto" }} className="mt-4 text-right">
+              <Output express={express} color={colors[8]} />
+            </div>
             <div
               className="mb-3 px-3 d-flex justify-content-between align-items-center"
               id="upper-icons"
