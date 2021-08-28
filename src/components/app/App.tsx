@@ -1,7 +1,6 @@
 import "./App.css";
 import BackspaceBtn from "../backspaceBtn/BackspaceBtn";
 import DarkModeBtn from "../darkMode/DarkModeBtn";
-import HistoryBtn from "../historyBtn/HistoryBtn";
 import BtnRow from "../btnRow/BtnRow";
 import Output from "../output/Output";
 import { useState } from "react";
@@ -244,7 +243,6 @@ function App() {
               id="upper-icons"
             >
               <div className="d-flex align-items-center justify-content-between left-up-icons">
-                <HistoryBtn color={colors[6]} />
                 <DarkModeBtn color={colors[6]} toggle={darkMode} />
               </div>
               <BackspaceBtn backspace={backspace} />
