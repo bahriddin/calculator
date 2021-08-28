@@ -33,6 +33,7 @@ let OPARS = 0;
 function App() {
   const [express, setExpress] = useState<Array<string>>([]);
   const [isEqual, setIsEqual] = useState(false);
+  const [temRes, setTemRes] = useState("");
   // [appBg, btnBg, digCol, clearCol, symCol, equalBg, upCol, borBotCol, output, output's_math_operator]
   const [colors, setColors] = useState<Array<string>>([
     "#fcfcfc",
@@ -99,6 +100,19 @@ function App() {
     }
   }, [isEqual]);
 
+  useEffect(() => {
+    setTemRes(() => {
+      const prev = express;
+      const symbols = ["-", "+", "×", "÷"];
+      const len = prev.length;
+      const last = prev.slice(len - 1)[0];
+      if (last === undefined) return "";
+      if (symbols.includes(last)) return "";
+      const res = lastCal(prev, 0);
+      return fixNum(res[0][0]);
+    });
+  }, [express]);
+
   function backspace() {
     setIsEqual(false);
     setExpress((prev) => {
@@ -145,16 +159,14 @@ function App() {
 
   function clickSymbol(symbol: string) {
     const index = SYMBOLS.indexOf(symbol);
-
+    setIsEqual(false);
     switch (index) {
       case 0: // C
-        setIsEqual(false);
         setExpress([]);
         OPARS = 0;
         break;
 
       case 1: // ()
-        setIsEqual(false);
         setExpress((prev) => {
           const res = clickPars(prev, OPARS);
           OPARS = res[1];
@@ -163,39 +175,34 @@ function App() {
         break;
 
       case 2: // %
-        setIsEqual(false);
         setExpress((prev) => clickPercent(prev));
         break;
 
       case 3: // ÷
-        setIsEqual(false);
         setExpress((prev) => clickDivide(prev));
         break;
 
       case 4: // ×
-        setIsEqual(false);
         setExpress((prev) => clickMultiply(prev));
         break;
 
       case 5: // -
-        setIsEqual(false);
         setExpress((prev) => clickSubt(prev));
         break;
 
       case 6: // +
-        setIsEqual(false);
         setExpress((prev) => clickAdd(prev));
         break;
 
       case 7: // =
-        setIsEqual(true);
         setExpress((prev) => {
           const symbols = ["-", "+", "×", "÷"];
           const len = prev.length;
           const last = prev.slice(len - 1)[0];
 
-          if (symbols.includes(last)) return prev;
+          if (symbols.includes(last) || OPARS !== 0) return prev;
 
+          setIsEqual(true);
           const res = lastCal(prev, OPARS);
           OPARS = res[1];
           return [fixNum(res[0][0])];
@@ -234,8 +241,8 @@ function App() {
                   oColor={colors[9]}
                 />
               </div>
-              <h3 style={{ color: colors[8] }} className="text-right mb-3">
-                45
+              <h3 style={{ color: colors[2] }} className="text-right mb-3">
+                {temRes}
               </h3>
             </div>
             <div
