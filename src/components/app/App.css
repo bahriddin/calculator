@@ -17,11 +17,6 @@ body {
   height: 56%;
 }
 
-#upper-icons {
-  padding: 0 24px !important;
-  margin-bottom: 12px !important;
-}
-
 .left-up-icons {
   width: 40%;
 }
@@ -113,55 +108,30 @@ body {
 }
 
 @media (min-width: 361px) and (max-width: 375px) {
-  #upper-icons {
-    padding: 0 18px !important;
-    margin-bottom: 12px !important;
-  }
-
   .left-up-icons {
     width: 40%;
   }
 }
 
 @media (min-width: 321px) and (max-width: 360px) {
-  #upper-icons {
-    padding: 0 16px !important;
-    margin-bottom: 12px !important;
-  }
-
   .left-up-icons {
     width: 40%;
   }
 }
 
 @media (min-width: 301px) and (max-width: 320px) {
-  #upper-icons {
-    padding: 0 14px !important;
-    margin-bottom: 10px !important;
-  }
-
   .left-up-icons {
     width: 40%;
   }
 }
 
 @media (min-width: 281px) and (max-width: 300px) {
-  #upper-icons {
-    padding: 0 10px !important;
-    margin-bottom: 10px !important;
-  }
-
   .left-up-icons {
     width: 40%;
   }
 }
 
 @media (max-width: 280px) {
-  #upper-icons {
-    padding: 0 7px !important;
-    margin-bottom: 10px !important;
-  }
-
   .left-up-icons {
     width: 40%;
   }

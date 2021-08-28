@@ -187,7 +187,7 @@ function App() {
         <div className="height-100 px-2">
           <div
             style={{ borderBottom: `1px solid ${colors[7]}` }}
-            className="height-48 top-sec d-flex flex-column justify-content-between"
+            className="height-48 mx-4 top-sec d-flex flex-column justify-content-between"
           >
             <div className="d-flex flex-column justify-content-between h-75">
               <div style={{ overflow: "auto" }} className="mt-4 text-right">
@@ -202,7 +202,7 @@ function App() {
               </h3>
             </div>
             <div
-              className="mb-3 px-3 d-flex justify-content-between align-items-center"
+              className="mb-3 d-flex justify-content-between align-items-center"
               id="upper-icons"
             >
               <div className="d-flex align-items-center justify-content-between left-up-icons">
