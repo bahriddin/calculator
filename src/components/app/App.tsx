@@ -18,6 +18,7 @@ import { lastCal } from "../../functions";
 import { fixNum } from "../../functions";
 import { clickPoint } from "../../functions";
 import { clickOppTog } from "../../functions";
+import { addCommas } from "../../functions";
 
 export type SignBtnType = {
   sign: string | number;
@@ -109,7 +110,10 @@ function App() {
       if (last === undefined) return "";
       if (symbols.includes(last)) return "";
       const res = lastCal(prev, 0);
-      return fixNum(res[0][0]);
+      if (res[0][0] === "NaN") return "";
+      const withoutCom = fixNum(res[0][0]);
+
+      return addCommas(withoutCom);
     });
   }, [express]);
 
@@ -200,11 +204,12 @@ function App() {
           const len = prev.length;
           const last = prev.slice(len - 1)[0];
 
-          if (symbols.includes(last) || OPARS !== 0) return prev;
+          if (symbols.includes(last)) return prev;
 
           setIsEqual(true);
           const res = lastCal(prev, OPARS);
           OPARS = res[1];
+          if (res[0][0] === "NaN") return prev;
           return [fixNum(res[0][0])];
         });
         break;

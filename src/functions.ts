@@ -390,6 +390,12 @@ export function clickOppTog(prev: string[], OPARS: number): [string[], number] {
 
 // for output component
 export function addCommas(num: string) {
+  let isNeg = false;
+  if (num[0] === "-") {
+    isNeg = true;
+    num = num.slice(1);
+  }
+
   if (!num.includes(".")) {
     const len = num.length;
     let res = "";
@@ -401,7 +407,7 @@ export function addCommas(num: string) {
       res = com + first + second + num[i] + res;
     }
 
-    return res;
+    return isNeg ? `-${res}` : res;
   } else {
     const indPoint = num.indexOf(".");
     const int = num.slice(0, indPoint);
@@ -414,7 +420,6 @@ export function addCommas(num: string) {
       const second = int[i - 1] !== undefined ? int[i - 1] : "";
       res = com + first + second + int[i] + res;
     }
-
-    return res + num.slice(indPoint);
+    return isNeg ? `-${res + num.slice(indPoint)}` : res + num.slice(indPoint);
   }
 }
