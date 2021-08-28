@@ -211,7 +211,7 @@ function simpleCal(express: Array<string>) {
     sliced.splice(0, 2, `-${sliced[1]}`);
   }
 
-  if (sliced.includes("%")) {
+  while (sliced.includes("%")) {
     const ind = sliced.indexOf("%");
     sliced.splice(ind - 1, 2, `${Number(sliced[ind - 1]) / 100}`);
   }

@@ -161,6 +161,12 @@ function App() {
 
       case 7: // =
         setExpress((prev) => {
+          const symbols = ["-", "+", "×", "÷"];
+          const len = prev.length;
+          const last = prev.slice(len - 1)[0];
+
+          if (symbols.includes(last)) return prev;
+
           const res = lastCal(prev, OPARS);
           OPARS = res[1];
           return [fixNum(res[0][0])];
