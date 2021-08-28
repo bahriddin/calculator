@@ -5,6 +5,7 @@ import HistoryBtn from "../historyBtn/HistoryBtn";
 import BtnRow from "../btnRow/BtnRow";
 import Output from "../output/Output";
 import { useState } from "react";
+import { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { addDigit } from "../../functions";
 import { eraseLastChar } from "../../functions";
@@ -32,6 +33,7 @@ let OPARS = 0;
 
 function App() {
   const [express, setExpress] = useState<Array<string>>([]);
+  const [isEqual, setIsEqual] = useState(false);
   // [appBg, btnBg, digCol, clearCol, symCol, equalBg, upCol, borBotCol, output, output's_math_operator]
   const [colors, setColors] = useState<Array<string>>([
     "#fcfcfc",
@@ -80,7 +82,26 @@ function App() {
     ["=", "#fafafa", colors[5], clickSymbol],
   ];
 
+  useEffect(() => {
+    if (isEqual === true) {
+      setColors((prev) => {
+        const colors = prev.slice();
+        colors[8] = colors[4];
+
+        return colors;
+      });
+    } else {
+      setColors((prev) => {
+        const colors = prev.slice();
+        colors[8] = colors[2];
+
+        return colors;
+      });
+    }
+  }, [isEqual]);
+
   function backspace() {
+    setIsEqual(false);
     setExpress((prev) => {
       const res = eraseLastChar(prev, OPARS);
       OPARS = res[1];
@@ -119,6 +140,7 @@ function App() {
   }
 
   function clickDigit(digit: number) {
+    setIsEqual(false);
     setExpress((prev) => addDigit(prev, digit));
   }
 
@@ -127,11 +149,13 @@ function App() {
 
     switch (index) {
       case 0: // C
+        setIsEqual(false);
         setExpress([]);
         OPARS = 0;
         break;
 
       case 1: // ()
+        setIsEqual(false);
         setExpress((prev) => {
           const res = clickPars(prev, OPARS);
           OPARS = res[1];
@@ -140,26 +164,32 @@ function App() {
         break;
 
       case 2: // %
+        setIsEqual(false);
         setExpress((prev) => clickPercent(prev));
         break;
 
       case 3: // ÷
+        setIsEqual(false);
         setExpress((prev) => clickDivide(prev));
         break;
 
       case 4: // ×
+        setIsEqual(false);
         setExpress((prev) => clickMultiply(prev));
         break;
 
       case 5: // -
+        setIsEqual(false);
         setExpress((prev) => clickSubt(prev));
         break;
 
       case 6: // +
+        setIsEqual(false);
         setExpress((prev) => clickAdd(prev));
         break;
 
       case 7: // =
+        setIsEqual(true);
         setExpress((prev) => {
           const symbols = ["-", "+", "×", "÷"];
           const len = prev.length;
@@ -174,10 +204,12 @@ function App() {
         break;
 
       case 8: // .
+        setIsEqual(false);
         setExpress((prev) => clickPoint(prev));
         break;
 
       case 9: // +/-
+        setIsEqual(false);
         setExpress((prev) => {
           const res = clickOppTog(prev, OPARS);
           OPARS = res[1];
@@ -203,7 +235,7 @@ function App() {
                   oColor={colors[9]}
                 />
               </div>
-              <h3 style={{ color: colors[8] }} className="text-right">
+              <h3 style={{ color: colors[8] }} className="text-right mb-3">
                 45
               </h3>
             </div>
