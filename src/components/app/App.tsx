@@ -113,7 +113,7 @@ function App() {
       const withoutCom = fixNum(res[0][0]);
       return addCommas(withoutCom);
     });
-  }, [express]);
+  }, [express, isEqual]);
 
   function backspace() {
     setIsEqual(false);
