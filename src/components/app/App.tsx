@@ -111,7 +111,6 @@ function App() {
       const res = lastCal(prev, 0);
       if (res[0][0] === "NaN") return "";
       const withoutCom = fixNum(res[0][0]);
-
       return addCommas(withoutCom);
     });
   }, [express]);
@@ -203,7 +202,7 @@ function App() {
           const len = prev.length;
           const last = prev.slice(len - 1)[0];
 
-          if (symbols.includes(last)) return prev;
+          if (symbols.includes(last) || last === undefined) return prev;
 
           setIsEqual(true);
           const res = lastCal(prev, OPARS);
