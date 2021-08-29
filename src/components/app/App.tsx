@@ -107,8 +107,7 @@ function App() {
       const symbols = ["-", "+", "×", "÷"];
       const len = prev.length;
       const last = prev.slice(len - 1)[0];
-      if (last === undefined) return "";
-      if (symbols.includes(last)) return "";
+      if (last === undefined || symbols.includes(last) || isEqual) return "";
       const res = lastCal(prev, 0);
       if (res[0][0] === "NaN") return "";
       const withoutCom = fixNum(res[0][0]);
