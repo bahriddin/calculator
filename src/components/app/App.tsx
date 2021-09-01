@@ -37,16 +37,16 @@ function App() {
   const [temRes, setTemRes] = useState("");
   // [appBg, btnBg, digCol, clearCol, symCol, equalBg, upCol, borBotCol, output, output's_math_operator]
   const [colors, setColors] = useState<Array<string>>([
-    "#fcfcfc",
-    "#f8f8f8",
-    "#555555",
-    "#e4684c",
-    "#569415",
-    "#68b31a",
-    "#878787",
-    "#f4f4f4",
-    "#555555",
-    "#569415",
+    "#010101",
+    "#1f1f1f",
+    "#fafafa",
+    "#e1694e",
+    "#9cd260",
+    "#427e04",
+    "#a5a5a5",
+    "#212121",
+    "#fafafa",
+    "#9cd260",
   ]);
   const row1: RowType = [
     ["C", colors[3], colors[1], clickSymbol],
