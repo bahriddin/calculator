@@ -63,37 +63,38 @@ export function clickPars(prev: string[], OPARS: number): [string[], number] {
   const last = sliced.slice(len - 1, len)[0];
 
   if (last === undefined) {
+    return [["("], OPARS + 1];
+  }
+    
+  if (last === "(") {
     OPARS++;
-    return [["("], OPARS];
+    return [[...sliced, "("], OPARS];
+  }
+  
+  if (!isNaN(Number(last))) {
+    if (OPARS === 0) {
+      OPARS++;
+      return [[...sliced, "×", "("], OPARS];
+    } else {
+      OPARS--;
+      return [[...sliced, ")"], OPARS];
+    }
   } else {
-    if (last === "(") {
+    if (symbols.includes(last)) {
       OPARS++;
       return [[...sliced, "("], OPARS];
     } else {
-      if (!isNaN(Number(last))) {
-        if (OPARS === 0) {
-          OPARS++;
-          return [[...sliced, "×", "("], OPARS];
-        } else {
-          OPARS--;
-          return [[...sliced, ")"], OPARS];
-        }
+      if (last === ")" && OPARS > 0) {
+        OPARS--;
+        return [[...sliced, ")"], OPARS];
       } else {
-        if (symbols.includes(last)) {
-          OPARS++;
-          return [[...sliced, "("], OPARS];
-        } else {
-          if (last === ")" && OPARS > 0) {
-            OPARS--;
-            return [[...sliced, ")"], OPARS];
-          } else {
-            OPARS++;
-            return [[...sliced, "×", "("], OPARS];
-          }
-        }
+        OPARS++;
+        return [[...sliced, "×", "("], OPARS];
       }
     }
+
   }
+  
 }
 
 // for '%' click button in clickSymbol function
